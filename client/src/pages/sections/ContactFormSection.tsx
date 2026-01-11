@@ -24,31 +24,31 @@ export const ContactFormSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="flex flex-col w-full items-center gap-[65px] px-4 py-8">
-      <h2 className="w-full [font-family:'Roboto',Helvetica] font-semibold text-[#1babc6] text-[37px] text-center tracking-[0] leading-[normal]">
+    <section className="flex flex-col w-full items-center gap-12 md:gap-[65px] px-6 md:px-4 py-12 md:py-8 overflow-hidden">
+      <h2 className="w-full [font-family:'Roboto',Helvetica] font-semibold text-[#1babc6] text-2xl md:text-[37px] text-center tracking-[0] leading-[normal]">
         Our Core Philosophy
       </h2>
 
-      <div className="flex flex-col items-start gap-[52px] w-full max-w-[1365px]">
+      <div className="flex flex-col items-start gap-12 md:gap-[52px] w-full max-w-[1365px]">
         {philosophyItems.map((item, index) => (
           <article
             key={index}
-            className={`flex items-center gap-7 w-full ${
-              item.imagePosition === "left" ? "flex-row-reverse" : "flex-row"
-            }`}
+            className={`flex flex-col md:flex-row items-center gap-8 md:gap-7 w-full ${
+              item.imagePosition === "left" ? "md:flex-row-reverse" : "md:flex-row"
+            } text-center md:text-left`}
           >
-            <div className="flex flex-col flex-1 items-start gap-[27px]">
-              <h3 className="w-full [font-family:'Montserrat',Helvetica] font-semibold text-[#2a24a3] text-[38px] tracking-[0] leading-[normal]">
+            <div className="flex flex-col flex-1 items-center md:items-start gap-4 md:gap-[27px]">
+              <h3 className="w-full [font-family:'Montserrat',Helvetica] font-semibold text-[#2a24a3] text-2xl md:text-[38px] tracking-[0] leading-tight md:leading-[normal]">
                 {item.title}
               </h3>
 
-              <p className="w-full [font-family:'Montserrat',Helvetica] font-medium text-[#6f797b] text-3xl tracking-[0] leading-[normal]">
+              <p className="w-full [font-family:'Montserrat',Helvetica] font-medium text-[#6f797b] text-lg md:text-3xl tracking-[0] leading-normal">
                 {item.description}
               </p>
             </div>
 
             <img
-              className="flex-1 max-w-[661px] h-auto object-cover"
+              className="w-full md:flex-1 max-w-[661px] h-auto object-cover rounded-2xl"
               alt={item.title}
               src={item.image}
             />

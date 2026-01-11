@@ -63,21 +63,21 @@ const partnerLogos = [
 
 export const ContactSection = (): JSX.Element => {
   return (
-    <section className="flex bg-[#ffffff] w-full">
-      <div className="flex mt-[76px] w-full max-w-[1353px] mx-auto px-4 flex-col items-center gap-[38px]">
-        <h2 className="[font-family:'Montserrat',Helvetica] font-normal text-transparent text-[37px] text-center tracking-[0] leading-[normal]">
+    <section className="flex bg-[#ffffff] w-full overflow-hidden">
+      <div className="flex mt-12 md:mt-[76px] w-full max-w-[1353px] mx-auto px-6 md:px-4 flex-col items-center gap-8 md:gap-[38px]">
+        <h2 className="[font-family:'Montserrat',Helvetica] font-normal text-transparent text-2xl md:text-[37px] text-center tracking-[0] leading-[normal]">
           <span className="font-medium text-[#1babc6]">Our </span>
           <span className="font-bold text-[#1babc6]">Services</span>
         </h2>
 
-        <div className="flex flex-col items-center gap-[66px] w-full">
+        <div className="flex flex-col items-center gap-8 md:gap-[66px] w-full">
           <Tabs defaultValue="software" className="w-full max-w-[759px]">
-            <TabsList className="w-full h-[63px] bg-[#ffffff] rounded-[100000px] shadow-[0px_0px_2px_#00000040] p-1.5 justify-between">
+            <TabsList className="w-full h-auto md:h-[63px] bg-[#ffffff] rounded-2xl md:rounded-[100000px] shadow-[0px_0px_2px_#00000040] p-1.5 flex flex-wrap justify-center md:justify-between gap-1">
               {tabItems.map((tab) => (
                 <TabsTrigger
                   key={tab.id}
                   value={tab.id}
-                  className={`h-[51px] px-2.5 rounded-[110px] [font-family:'Montserrat',Helvetica] text-lg tracking-[0] leading-[normal] data-[state=active]:bg-[#2a24a3] data-[state=active]:text-[#ffffff] data-[state=active]:font-semibold data-[state=active]:text-[19px] data-[state=inactive]:bg-transparent data-[state=inactive]:text-[#2a24a3] data-[state=inactive]:font-medium ${tab.active ? "min-w-[139px]" : ""}`}
+                  className={`h-10 md:h-[51px] px-3 md:px-2.5 rounded-[110px] [font-family:'Montserrat',Helvetica] text-sm md:text-lg tracking-[0] leading-[normal] data-[state=active]:bg-[#2a24a3] data-[state=active]:text-[#ffffff] data-[state=active]:font-semibold data-[state=active]:text-base md:data-[state=active]:text-[19px] data-[state=inactive]:bg-transparent data-[state=inactive]:text-[#2a24a3] data-[state=inactive]:font-medium ${tab.active ? "md:min-w-[139px]" : ""}`}
                 >
                   {tab.label}
                 </TabsTrigger>
@@ -85,10 +85,10 @@ export const ContactSection = (): JSX.Element => {
             </TabsList>
           </Tabs>
 
-          <div className="flex flex-col items-start gap-[57px] w-full">
-            <div className="flex items-center gap-[49px] w-full">
-              <div className="flex flex-col w-full max-w-[666px] items-start gap-5">
-                <h3 className="w-full max-w-[444px] [font-family:'Montserrat',Helvetica] font-normal text-[#2a24a3] text-[42px] tracking-[0] leading-[normal]">
+          <div className="flex flex-col items-start gap-8 md:gap-[57px] w-full">
+            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-[49px] w-full">
+              <div className="flex flex-col w-full md:max-w-[666px] items-center md:items-start gap-4 md:gap-5 text-center md:text-left">
+                <h3 className="w-full md:max-w-[444px] [font-family:'Montserrat',Helvetica] font-normal text-[#2a24a3] text-2xl md:text-[42px] tracking-[0] leading-tight md:leading-[normal]">
                   <span className="font-medium">Custom </span>
                   <span className="font-bold">Software</span>
                   <span className="font-medium"> &amp; </span>
@@ -96,44 +96,42 @@ export const ContactSection = (): JSX.Element => {
                   <span className="font-medium"> Solutions</span>
                 </h3>
 
-                <p className="[font-family:'Montserrat',Helvetica] font-medium text-[#6f797b] text-3xl tracking-[0] leading-[normal]">
+                <p className="[font-family:'Montserrat',Helvetica] font-medium text-[#6f797b] text-lg md:text-3xl tracking-[0] leading-normal">
                   We develop high-performance software designed to scale with
-                  your user base and
-                  <br />
-                  operational complexity.
+                  your user base and operational complexity.
                 </p>
               </div>
 
               <img
-                className="w-full max-w-[617.39px] h-auto"
+                className="w-full md:max-w-[617.39px] h-auto"
                 alt="Chatgpt image jan"
                 src="/figmaAssets/chatgpt-image-jan-3--2026--12-47-23-pm-1.png"
               />
             </div>
 
-            <div className="flex flex-col items-start gap-5 w-full">
-              <div className="flex items-center gap-[22px] w-full">
+            <div className="flex flex-col items-start gap-6 md:gap-5 w-full">
+              <div className="flex flex-col md:flex-row items-center gap-6 md:gap-[22px] w-full">
                 {serviceCards.slice(0, 2).map((card, index) => (
                   <Card
                     key={index}
-                    className="flex-1 h-[394px] rounded-[20px] border border-solid border-[#f0e2e2]"
+                    className="w-full md:flex-1 h-auto md:h-[394px] rounded-[20px] border border-solid border-[#f0e2e2]"
                   >
-                    <CardContent className="flex flex-col h-full items-center gap-[37px] pt-[31px] pb-[21px] px-[17px]">
+                    <CardContent className="flex flex-col h-full items-center gap-6 md:gap-[37px] pt-8 md:pt-[31px] pb-6 md:pb-[21px] px-4 md:px-[17px]">
                       <div className="relative flex items-center justify-center">
-                        <div className="w-[114px] h-[114px] bg-[#f6f6f6] rounded-[57px]" />
+                        <div className="w-[80px] h-[80px] md:w-[114px] md:h-[114px] bg-[#f6f6f6] rounded-full" />
                         <img
-                          className="absolute w-[123px] h-[123px] object-cover"
+                          className="absolute w-[90px] h-[90px] md:w-[123px] md:h-[123px] object-cover"
                           alt={card.title}
                           src={card.icon}
                         />
                       </div>
 
-                      <div className="flex flex-col items-center justify-center gap-[21px] w-full">
-                        <h4 className="[font-family:'Montserrat',Helvetica] font-semibold text-[#2a24a3] text-[25px] text-center tracking-[0] leading-[normal]">
+                      <div className="flex flex-col items-center justify-center gap-4 md:gap-[21px] w-full">
+                        <h4 className="[font-family:'Montserrat',Helvetica] font-semibold text-[#2a24a3] text-xl md:text-[25px] text-center tracking-[0] leading-[normal]">
                           {card.title}
                         </h4>
 
-                        <p className="[font-family:'Montserrat',Helvetica] font-medium text-[#6f7a7c] text-2xl text-center tracking-[0] leading-[normal]">
+                        <p className="[font-family:'Montserrat',Helvetica] font-medium text-[#6f7a7c] text-base md:text-2xl text-center tracking-[0] leading-[normal]">
                           {card.description}
                         </p>
                       </div>
@@ -142,27 +140,27 @@ export const ContactSection = (): JSX.Element => {
                 ))}
               </div>
 
-              <div className="flex items-center gap-[22px] w-full">
+              <div className="flex flex-col md:flex-row items-center gap-6 md:gap-[22px] w-full">
                 {serviceCards.slice(2, 4).map((card, index) => (
                   <Card
                     key={index}
-                    className="flex-1 h-[394px] rounded-[20px] border border-solid border-[#f0e2e2]"
+                    className="w-full md:flex-1 h-auto md:h-[394px] rounded-[20px] border border-solid border-[#f0e2e2]"
                   >
-                    <CardContent className="flex flex-col h-full items-center gap-[37px] pt-[31px] pb-[21px] px-[17px]">
-                      <div className="w-[114px] h-[114px] bg-[#f6f6f6] rounded-[57px] flex items-center justify-center">
+                    <CardContent className="flex flex-col h-full items-center gap-6 md:gap-[37px] pt-8 md:pt-[31px] pb-6 md:pb-[21px] px-4 md:px-[17px]">
+                      <div className="w-[80px] h-[80px] md:w-[114px] md:h-[114px] bg-[#f6f6f6] rounded-full flex items-center justify-center">
                         <img
-                          className="w-[100px] h-[100px] object-cover"
+                          className="w-[70px] h-[70px] md:w-[100px] md:h-[100px] object-cover"
                           alt={card.title}
                           src={card.icon}
                         />
                       </div>
 
-                      <div className="flex flex-col items-center justify-center gap-[21px] w-full">
-                        <h4 className="[font-family:'Montserrat',Helvetica] font-semibold text-[#2a24a3] text-[25px] text-center tracking-[0] leading-[normal]">
+                      <div className="flex flex-col items-center justify-center gap-4 md:gap-[21px] w-full">
+                        <h4 className="[font-family:'Montserrat',Helvetica] font-semibold text-[#2a24a3] text-xl md:text-[25px] text-center tracking-[0] leading-[normal]">
                           {card.title}
                         </h4>
 
-                        <p className="[font-family:'Montserrat',Helvetica] font-medium text-[#6f7a7c] text-2xl text-center tracking-[0] leading-[normal]">
+                        <p className="[font-family:'Montserrat',Helvetica] font-medium text-[#6f7a7c] text-base md:text-2xl text-center tracking-[0] leading-[normal]">
                           {card.description}
                         </p>
                       </div>
@@ -172,33 +170,31 @@ export const ContactSection = (): JSX.Element => {
               </div>
 
               <Card className="w-full rounded-[20px] border border-solid border-[#f0e2e2]">
-                <CardContent className="flex items-center gap-[41px] px-[41px] py-[31px]">
-                  <div className="w-[114px] h-[114px] bg-[#f6f6f6] rounded-[57px] flex items-center justify-center flex-shrink-0">
+                <CardContent className="flex flex-col lg:flex-row items-center gap-8 px-6 md:px-[41px] py-8 md:py-[31px]">
+                  <div className="w-[80px] h-[80px] md:w-[114px] md:h-[114px] bg-[#f6f6f6] rounded-full flex items-center justify-center flex-shrink-0">
                     <img
-                      className="w-[69.66px] h-[69.66px] object-cover"
+                      className="w-[50px] h-[50px] md:w-[69.66px] md:h-[69.66px] object-cover"
                       alt="Crm"
                       src="/figmaAssets/crm.png"
                     />
                   </div>
 
-                  <div className="flex flex-col items-start justify-center gap-[41px] flex-1">
-                    <div className="flex flex-col items-start justify-center gap-[21px] w-full">
-                      <h4 className="[font-family:'Montserrat',Helvetica] font-semibold text-[#2a24a3] text-[27px] tracking-[0] leading-[normal]">
+                  <div className="flex flex-col items-center lg:items-start justify-center gap-6 md:gap-[41px] flex-1 text-center lg:text-left">
+                    <div className="flex flex-col items-center lg:items-start justify-center gap-4 md:gap-[21px] w-full">
+                      <h4 className="[font-family:'Montserrat',Helvetica] font-semibold text-[#2a24a3] text-xl md:text-[27px] tracking-[0] leading-[normal]">
                         Enterprise Resource Planning (ERP) &amp; CRM
                       </h4>
 
-                      <p className="[font-family:'Montserrat',Helvetica] font-medium text-[#6f7a7c] text-2xl tracking-[0] leading-[normal]">
-                        Specialized deployment and customization of
-                        market-leading platforms to centralize finance, HR, and
-                        supply chain operations
+                      <p className="[font-family:'Montserrat',Helvetica] font-medium text-[#6f7a7c] text-base md:text-2xl tracking-[0] leading-[normal]">
+                        Specialized deployment and customization of market-leading platforms to centralize finance, HR, and supply chain operations
                       </p>
                     </div>
 
-                    <div className="flex items-center gap-[43px]">
+                    <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 md:gap-[43px]">
                       {partnerLogos.map((logo, index) => (
                         <img
                           key={index}
-                          className={logo.className}
+                          className="h-8 md:h-12 w-auto object-contain"
                           alt={logo.alt}
                           src={logo.src}
                         />
@@ -206,12 +202,12 @@ export const ContactSection = (): JSX.Element => {
                     </div>
                   </div>
 
-                  <Button className="w-[213px] h-[55px] bg-[#2a24a3] rounded-[110px] flex items-center justify-center gap-2.5 p-2.5 hover:bg-[#2a24a3]/90">
-                    <span className="[font-family:'Montserrat',Helvetica] font-medium text-[#ffffff] text-[21px] tracking-[0] leading-[normal]">
+                  <Button className="w-full md:w-[213px] h-12 md:h-[55px] bg-[#2a24a3] rounded-[110px] flex items-center justify-center gap-2.5 p-2.5 hover:bg-[#2a24a3]/90">
+                    <span className="[font-family:'Montserrat',Helvetica] font-medium text-[#ffffff] text-lg md:text-[21px] tracking-[0] leading-[normal]">
                       More Details
                     </span>
                     <img
-                      className="w-[29px] h-[29px]"
+                      className="w-6 h-6 md:w-[29px] md:h-[29px]"
                       alt="Iconoir arrow up"
                       src="/figmaAssets/iconoir-arrow-up-circle.svg"
                     />
