@@ -50,31 +50,31 @@ export const ServicesSection = (): JSX.Element => {
   const [activeTab, setActiveTab] = useState("all");
 
   return (
-    <section className="flex flex-col w-full items-center gap-12 md:gap-[86px] py-12 px-4 overflow-hidden">
+    <section className="flex flex-col w-full items-center gap-10 md:gap-16 lg:gap-[86px] py-12 px-4 overflow-hidden">
       <div className="inline-flex flex-col items-center gap-6 md:gap-[30px] w-full">
         <div className="flex justify-center">
-          <h2 className="[font-family:'Roboto',Helvetica] font-semibold text-[#1babc6] text-2xl md:text-[37px] text-center whitespace-nowrap tracking-[0] leading-[normal]">
+          <h2 className="[font-family:'Roboto',Helvetica] font-semibold text-[#1babc6] text-xl md:text-2xl lg:text-[37px] text-center whitespace-nowrap tracking-[0] leading-[normal]">
             Our work
           </h2>
         </div>
 
-        <nav className="flex w-full max-w-[652px] items-center justify-center md:justify-between flex-wrap gap-2 px-2 py-2 md:pl-1.5 md:pr-[35px] md:py-1.5 bg-[#ffffff] rounded-2xl md:rounded-[100000px] shadow-[0px_0px_2px_#00000040]">
+        <nav className="flex w-full max-w-[652px] items-center justify-center md:justify-between flex-wrap gap-2 px-2 py-2 md:pl-1.5 md:pr-[35px] md:py-1.5 bg-[#ffffff] rounded-xl md:rounded-[100000px] shadow-[0px_0px_2px_#00000040]">
           {filterTabs.map((tab) => (
             <Button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               variant="ghost"
-              className={`h-9 md:h-auto ${
+              className={`h-8 md:h-9 lg:h-auto ${
                 activeTab === tab.id
                   ? "bg-[#2a24a3] rounded-[110px] hover:bg-[#2a24a3]"
                   : ""
-              } px-4 py-1.5 md:p-2.5`}
+              } px-3 md:px-4 py-1 lg:p-2.5`}
             >
               <span
                 className={`[font-family:'Montserrat',Helvetica] ${
                   activeTab === tab.id
-                    ? "font-semibold text-[#ffffff] text-sm md:text-[19px]"
-                    : "font-medium text-[#2a24a3] text-sm md:text-lg"
+                    ? "font-semibold text-[#ffffff] text-xs md:text-sm lg:text-[19px]"
+                    : "font-medium text-[#2a24a3] text-xs md:text-sm lg:text-lg"
                 } tracking-[0] leading-[normal]`}
               >
                 {tab.label}
@@ -93,7 +93,7 @@ export const ServicesSection = (): JSX.Element => {
               src={project.src}
             />
             {project.title && (
-              <div className="absolute bottom-6 md:bottom-[91px] left-1/2 -translate-x-1/2 [font-family:'Roboto',Helvetica] font-semibold text-[#ffffff] text-2xl md:text-[39px] text-center tracking-[0] leading-tight md:leading-[55px] whitespace-nowrap bg-black/20 md:bg-transparent px-4 py-2 rounded-lg backdrop-blur-sm md:backdrop-blur-none">
+              <div className="absolute bottom-4 md:bottom-8 lg:bottom-[91px] left-1/2 -translate-x-1/2 [font-family:'Roboto',Helvetica] font-semibold text-[#ffffff] text-lg md:text-2xl lg:text-[39px] text-center tracking-[0] leading-tight md:leading-relaxed lg:leading-[55px] whitespace-nowrap bg-black/40 md:bg-black/20 lg:bg-transparent px-4 py-2 rounded-lg backdrop-blur-sm md:backdrop-blur-none">
                 {project.title}
               </div>
             )}

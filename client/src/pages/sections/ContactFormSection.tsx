@@ -24,31 +24,31 @@ export const ContactFormSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="flex flex-col w-full items-center gap-12 md:gap-[65px] px-6 md:px-4 py-12 md:py-8 overflow-hidden">
-      <h2 className="w-full [font-family:'Roboto',Helvetica] font-semibold text-[#1babc6] text-2xl md:text-[37px] text-center tracking-[0] leading-[normal]">
+    <section className="flex flex-col w-full items-center gap-10 md:gap-14 lg:gap-[65px] px-6 md:px-4 py-12 overflow-hidden">
+      <h2 className="w-full [font-family:'Roboto',Helvetica] font-semibold text-[#1babc6] text-xl md:text-2xl lg:text-[37px] text-center tracking-[0] leading-[normal]">
         Our Core Philosophy
       </h2>
 
-      <div className="flex flex-col items-start gap-12 md:gap-[52px] w-full max-w-[1365px]">
+      <div className="flex flex-col items-start gap-10 md:gap-14 lg:gap-[52px] w-full max-w-[1365px]">
         {philosophyItems.map((item, index) => (
           <article
             key={index}
-            className={`flex flex-col md:flex-row items-center gap-8 md:gap-7 w-full ${
+            className={`flex flex-col md:flex-row items-center gap-6 md:gap-10 lg:gap-7 w-full ${
               item.imagePosition === "left" ? "md:flex-row-reverse" : "md:flex-row"
             } text-center md:text-left`}
           >
-            <div className="flex flex-col flex-1 items-center md:items-start gap-4 md:gap-[27px]">
-              <h3 className="w-full [font-family:'Montserrat',Helvetica] font-semibold text-[#2a24a3] text-2xl md:text-[38px] tracking-[0] leading-tight md:leading-[normal]">
+            <div className="flex flex-col flex-1 items-center md:items-start gap-4 md:gap-6 lg:gap-[27px]">
+              <h3 className="w-full [font-family:'Montserrat',Helvetica] font-semibold text-[#2a24a3] text-xl md:text-2xl lg:text-[38px] tracking-[0] leading-tight md:leading-[normal]">
                 {item.title}
               </h3>
 
-              <p className="w-full [font-family:'Montserrat',Helvetica] font-medium text-[#6f797b] text-lg md:text-3xl tracking-[0] leading-normal">
+              <p className="w-full [font-family:'Montserrat',Helvetica] font-medium text-[#6f797b] text-base md:text-lg lg:text-3xl tracking-[0] leading-normal">
                 {item.description}
               </p>
             </div>
 
             <img
-              className="w-full md:flex-1 max-w-[661px] h-auto object-cover rounded-2xl"
+              className="w-full md:flex-1 max-w-[450px] lg:max-w-[661px] h-auto object-cover rounded-xl"
               alt={item.title}
               src={item.image}
             />
