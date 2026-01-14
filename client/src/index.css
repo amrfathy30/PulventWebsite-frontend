@@ -207,3 +207,27 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
+
+/* RTL Support */
+html.rtl {
+  direction: rtl;
+}
+
+html.rtl body {
+  text-align: right;
+}
+
+/* Ensure proper font rendering for Arabic */
+html[lang="ar"] {
+  font-family: 'Montserrat', 'Arial', sans-serif;
+}
+
+/* RTL-specific adjustments for navigation and layout */
+html.rtl .flex-row-reverse-rtl {
+  flex-direction: row-reverse;
+}
+
+/* Icon flip for RTL - arrows should point the other way */
+html.rtl .rtl-flip {
+  transform: scaleX(-1);
+}

@@ -2,15 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-
-const filterTabs = [
-  { id: "all", label: "All" },
-  { id: "mobile", label: "Mobile" },
-  { id: "web", label: "Web" },
-  { id: "desktop", label: "Desktop" },
-  { id: "marketing", label: "Marketing" },
-  { id: "ai", label: "Ai" },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const projectImages = [
   {
@@ -42,23 +34,33 @@ const projectImages = [
     src: "/figmaAssets/rectangle-2032.png",
     alt: "Rectangle",
     className: "",
-    title: "Taxik Mobile App",
+    hasTaxik: true,
   },
 ];
 
 export const ServicesSection = (): JSX.Element => {
   const [activeTab, setActiveTab] = useState("all");
+  const { isRTL, t } = useLanguage();
+
+  const filterTabs = [
+    { id: "all", label: t("work.all") },
+    { id: "mobile", label: t("work.mobile") },
+    { id: "web", label: t("work.web") },
+    { id: "desktop", label: t("work.desktop") },
+    { id: "marketing", label: t("work.marketing") },
+    { id: "ai", label: t("work.ai") },
+  ];
 
   return (
     <section className="flex flex-col w-full items-center gap-10 md:gap-16 lg:gap-[86px] py-12 px-4 overflow-hidden">
       <div className="inline-flex flex-col items-center gap-6 md:gap-[30px] w-full">
         <div className="flex justify-center">
           <h2 className="[font-family:'Roboto',Helvetica] font-semibold text-[#1babc6] text-xl md:text-2xl lg:text-[37px] text-center whitespace-nowrap tracking-[0] leading-[normal]">
-            Our work
+            {t("work.title")}
           </h2>
         </div>
 
-        <nav className="flex w-full max-w-[652px] items-center justify-center md:justify-between flex-wrap gap-2 px-2 py-2 md:pl-1.5 md:pr-[35px] md:py-1.5 bg-[#ffffff] rounded-xl md:rounded-[100000px] shadow-[0px_0px_2px_#00000040]">
+        <nav className={`flex w-full max-w-[652px] items-center justify-center md:justify-between flex-wrap gap-2 px-2 py-2 md:pl-1.5 md:pr-[35px] md:py-1.5 bg-[#ffffff] rounded-xl md:rounded-[100000px] shadow-[0px_0px_2px_#00000040] ${isRTL ? "md:flex-row-reverse md:pr-1.5 md:pl-[35px]" : ""}`}>
           {filterTabs.map((tab) => (
             <Button
               key={tab.id}
@@ -92,9 +94,9 @@ export const ServicesSection = (): JSX.Element => {
               alt={project.alt}
               src={project.src}
             />
-            {project.title && (
+            {project.hasTaxik && (
               <div className="absolute bottom-4 md:bottom-8 lg:bottom-[91px] left-1/2 -translate-x-1/2 [font-family:'Roboto',Helvetica] font-semibold text-[#ffffff] text-lg md:text-2xl lg:text-[39px] text-center tracking-[0] leading-tight md:leading-relaxed lg:leading-[55px] whitespace-nowrap bg-black/40 md:bg-black/20 lg:bg-transparent px-4 py-2 rounded-lg backdrop-blur-sm md:backdrop-blur-none">
-                {project.title}
+                {t("work.taxik")}
               </div>
             )}
           </div>
