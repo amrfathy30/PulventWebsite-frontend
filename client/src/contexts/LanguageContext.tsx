@@ -201,11 +201,15 @@ const translations = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>("en");
+  const [language, setLanguage] = useState<Language>(() => {
+    const saved = localStorage.getItem("pulvent-language");
+    return (saved === "ar" || saved === "en") ? saved : "en";
+  });
 
   const isRTL = language === "ar";
 
   useEffect(() => {
+    localStorage.setItem("pulvent-language", language);
     document.documentElement.dir = isRTL ? "rtl" : "ltr";
     document.documentElement.lang = language;
     if (isRTL) {
