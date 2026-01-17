@@ -62,9 +62,9 @@ export const ContactSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="flex bg-[#ffffff] w-full overflow-hidden">
+    <section className="flex bg-[#ffffff] w-full overflow-hidden mb-6 md:mb-12 lg:mb-[57px] pb-4 md:pb-10 lg:pb-[36px]">
       <div className="flex mt-8 md:mt-16 lg:mt-[76px] w-full max-w-[1353px] mx-auto px-6 md:px-4 flex-col items-center gap-6 md:gap-[38px]">
-        <h2 className="[font-family:'Montserrat',Helvetica] font-normal text-transparent text-xl md:text-2xl lg:text-[37px] text-center tracking-[0] leading-[normal]">
+        <h2 className="font-normal text-transparent text-xl md:text-2xl lg:text-[37px] text-center tracking-[0] leading-[normal]">
           <span className="font-medium text-[#1babc6]">{t("services.our")}</span>
           <span className="font-bold text-[#1babc6]">{t("services.title")}</span>
         </h2>
@@ -76,7 +76,7 @@ export const ContactSection = (): JSX.Element => {
                 <TabsTrigger
                   key={tab.id}
                   value={tab.id}
-                  className={`h-9 md:h-10 lg:h-[51px] px-2.5 md:px-3 lg:px-2.5 rounded-[110px] [font-family:'Montserrat',Helvetica] text-xs md:text-sm lg:text-lg tracking-[0] leading-[normal] data-[state=active]:bg-[#2a24a3] data-[state=active]:text-[#ffffff] data-[state=active]:font-semibold data-[state=active]:text-sm md:data-[state=active]:text-base lg:data-[state=active]:text-[19px] data-[state=inactive]:bg-transparent data-[state=inactive]:text-[#2a24a3] data-[state=inactive]:font-medium ${tab.active ? "md:min-w-[100px] lg:min-w-[139px]" : ""}`}
+                  className={`h-9 md:h-10 lg:h-[51px] px-2.5 md:px-3 lg:px-2.5 rounded-[110px] text-xs md:text-sm lg:text-lg tracking-[0] leading-[normal] data-[state=active]:bg-[#2a24a3] data-[state=active]:text-[#ffffff] data-[state=active]:font-semibold data-[state=active]:text-sm md:data-[state=active]:text-base lg:data-[state=active]:text-[19px] data-[state=inactive]:bg-transparent data-[state=inactive]:text-[#2a24a3] data-[state=inactive]:font-medium ${tab.active ? "md:min-w-[100px] lg:min-w-[139px]" : ""}`}
                 >
                   {tab.label}
                 </TabsTrigger>
@@ -85,17 +85,17 @@ export const ContactSection = (): JSX.Element => {
           </Tabs>
 
           <div className="flex flex-col items-start gap-6 md:gap-12 lg:gap-[57px] w-full">
-            <div className={`flex flex-col md:flex-row items-center gap-6 md:gap-10 lg:gap-[49px] w-full ${isRTL ? "md:flex-row-reverse" : ""}`}>
-              <div className={`flex flex-col w-full md:max-w-[666px] items-center md:items-start gap-4 text-center md:text-left ${isRTL ? "md:items-end md:text-right" : ""}`}>
-                <h3 className="w-full md:max-w-[444px] [font-family:'Montserrat',Helvetica] font-normal text-[#2a24a3] text-xl md:text-3xl lg:text-[42px] tracking-[0] leading-tight md:leading-[normal]">
-                  <span className="font-medium">{t("services.custom")}</span>
-                  <span className="font-bold">{t("services.softwareWord")}</span>
-                  <span className="font-medium">{t("services.and")}</span>
+            <div className={`flex flex-col md:flex-row items-center gap-6 md:gap-10 lg:gap-[49px] w-full`}>
+              <div className={`flex flex-col w-full md:max-w-[666px] items-center md:items-start gap-4 text-center md:text-left `}>
+                <h3 className={`${isRTL ? "flex space-x-[2px]" : ""} text-start w-full font-normal text-[#2a24a3] text-xl md:text-3xl lg:text-[42px] tracking-[0] leading-tight md:leading-[normal]`}>
+                  <span className="font-normal">{t("services.custom")}</span>
+                  <span className={`${isRTL ? "font-normal" : "font-bold"} `}>{t("services.softwareWord")}</span>
+                  <span className="font-normal">{t("services.and")}</span>
                   <span className="font-bold">{t("services.enterprise")}</span>
-                  <span className="font-medium">{t("services.solutions")}</span>
+                  <span className="font-normal">{t("services.solutions")}</span>
                 </h3>
 
-                <p className="[font-family:'Montserrat',Helvetica] font-medium text-[#6f797b] text-base md:text-xl lg:text-3xl tracking-[0] leading-normal">
+                <p className="text-start font-medium text-[#6f797b] text-base md:text-xl lg:text-3xl tracking-[0] leading-normal">
                   {t("services.description")}
                 </p>
               </div>
@@ -108,7 +108,7 @@ export const ContactSection = (): JSX.Element => {
             </div>
 
             <div className="flex flex-col items-start gap-5 md:gap-6 w-full">
-              <div className="flex flex-col md:flex-row items-center gap-6 md:gap-[22px] w-full">
+              <div className={`${isRTL ? "md:flex-row-reverse" : "md:flex-row "} flex flex-col md:flex-row items-center gap-6 md:gap-[22px] w-full`}>
                 {serviceCards.slice(0, 2).map((card, index) => (
                   <Card
                     key={index}
@@ -125,11 +125,11 @@ export const ContactSection = (): JSX.Element => {
                       </div>
 
                       <div className="flex flex-col items-center justify-center gap-3 md:gap-4 lg:gap-[21px] w-full">
-                        <h4 className="[font-family:'Montserrat',Helvetica] font-semibold text-[#2a24a3] text-lg md:text-xl lg:text-[25px] text-center tracking-[0] leading-[normal]">
+                        <h4 className="font-semibold text-[#2a24a3] text-lg md:text-xl lg:text-[25px] text-center tracking-[0] leading-[normal]">
                           {card.title}
                         </h4>
 
-                        <p className="[font-family:'Montserrat',Helvetica] font-medium text-[#6f7a7c] text-sm md:text-base lg:text-2xl text-center tracking-[0] leading-[normal]">
+                        <p className="font-medium text-[#6f7a7c] text-sm md:text-base lg:text-2xl text-center tracking-[0] leading-[normal]">
                           {card.description}
                         </p>
                       </div>
@@ -138,7 +138,7 @@ export const ContactSection = (): JSX.Element => {
                 ))}
               </div>
 
-              <div className="flex flex-col md:flex-row items-center gap-6 md:gap-[22px] w-full">
+              <div className={`${isRTL ? "md:flex-row-reverse" : "md:flex-row "} flex flex-col md:flex-row items-center gap-6 md:gap-[22px] w-full`}>
                 {serviceCards.slice(2, 4).map((card, index) => (
                   <Card
                     key={index}
@@ -154,11 +154,11 @@ export const ContactSection = (): JSX.Element => {
                       </div>
 
                       <div className="flex flex-col items-center justify-center gap-3 md:gap-4 lg:gap-[21px] w-full">
-                        <h4 className="[font-family:'Montserrat',Helvetica] font-semibold text-[#2a24a3] text-lg md:text-xl lg:text-[25px] text-center tracking-[0] leading-[normal]">
+                        <h4 className="font-semibold text-[#2a24a3] text-lg md:text-xl lg:text-[25px] text-center tracking-[0] leading-[normal]">
                           {card.title}
                         </h4>
 
-                        <p className="[font-family:'Montserrat',Helvetica] font-medium text-[#6f7a7c] text-sm md:text-base lg:text-2xl text-center tracking-[0] leading-[normal]">
+                        <p className="font-medium text-[#6f7a7c] text-sm md:text-base lg:text-2xl text-center tracking-[0] leading-[normal]">
                           {card.description}
                         </p>
                       </div>
@@ -168,7 +168,7 @@ export const ContactSection = (): JSX.Element => {
               </div>
 
               <Card className="w-full rounded-[20px] border border-solid border-[#f0e2e2]">
-                <CardContent className={`flex flex-col lg:flex-row items-center gap-8 px-6 md:px-[41px] py-8 md:py-[31px] ${isRTL ? "lg:flex-row-reverse" : ""}`}>
+                <CardContent className={`flex flex-col lg:flex-row items-center gap-8 px-6 md:px-[41px] py-8 md:py-[31px] `}>
                   <div className="w-[80px] h-[80px] md:w-[114px] md:h-[114px] bg-[#f6f6f6] rounded-full flex items-center justify-center flex-shrink-0">
                     <img
                       className="w-[50px] h-[50px] md:w-[69.66px] md:h-[69.66px] object-cover"
@@ -179,16 +179,16 @@ export const ContactSection = (): JSX.Element => {
 
                   <div className={`flex flex-col items-center lg:items-start justify-center gap-6 md:gap-[41px] flex-1 text-center lg:text-left ${isRTL ? "lg:items-end lg:text-right" : ""}`}>
                     <div className={`flex flex-col items-center lg:items-start justify-center gap-4 md:gap-[21px] w-full ${isRTL ? "lg:items-end" : ""}`}>
-                      <h4 className="[font-family:'Montserrat',Helvetica] font-semibold text-[#2a24a3] text-xl md:text-[27px] tracking-[0] leading-[normal]">
+                      <h4 className="w-full font-semibold text-[#2a24a3] text-xl md:text-[27px] tracking-[0] leading-[normal]">
                         {t("services.erp")}
                       </h4>
 
-                      <p className="[font-family:'Montserrat',Helvetica] font-medium text-[#6f7a7c] text-base md:text-2xl tracking-[0] leading-[normal]">
+                      <p className="font-medium text-[#6f7a7c] text-base md:text-2xl tracking-[0] leading-[normal]">
                         {t("services.erpDesc")}
                       </p>
                     </div>
 
-                    <div className={`flex flex-wrap items-center justify-center lg:justify-start gap-6 md:gap-[43px] ${isRTL ? "lg:justify-end" : ""}`}>
+                    <div className={`flex flex-wrap items-center justify-center lg:justify-start gap-6 md:gap-[43px] ${isRTL ? "flex-row-reverse lg:justify-end" : ""}`}>
                       {partnerLogos.map((logo, index) => (
                         <img
                           key={index}
@@ -200,8 +200,8 @@ export const ContactSection = (): JSX.Element => {
                     </div>
                   </div>
 
-                  <Button className={`w-full md:w-[213px] h-12 md:h-[55px] bg-[#2a24a3] rounded-[110px] flex items-center justify-center gap-2.5 p-2.5 hover:bg-[#2a24a3]/90 ${isRTL ? "flex-row-reverse" : ""}`}>
-                    <span className="[font-family:'Montserrat',Helvetica] font-medium text-[#ffffff] text-lg md:text-[21px] tracking-[0] leading-[normal]">
+                  <Button className={`w-full md:w-[213px] h-12 md:h-[55px] bg-[#2a24a3] rounded-[110px] flex items-center justify-center gap-2.5 p-2.5 hover:bg-[#2a24a3]/90`}>
+                    <span className="font-medium text-[#ffffff] text-lg md:text-[21px] tracking-[0] leading-[normal]">
                       {t("services.moreDetails")}
                     </span>
                     <img

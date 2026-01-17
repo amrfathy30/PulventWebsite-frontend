@@ -205,6 +205,7 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: inherit;
   }
 }
 
@@ -217,9 +218,14 @@ html.rtl body {
   text-align: right;
 }
 
-/* Ensure proper font rendering for Arabic */
+/* Font for English (LTR) */
+html[lang="en"] {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Font for Arabic (RTL) */
 html[lang="ar"] {
-  font-family: 'Montserrat', 'Arial', sans-serif;
+  font-family: 'Cairo', sans-serif;
 }
 
 /* RTL-specific adjustments for navigation and layout */

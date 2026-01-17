@@ -26,7 +26,7 @@ export const ContactFormSection = (): JSX.Element => {
 
   return (
     <section className="flex flex-col w-full items-center gap-10 md:gap-14 lg:gap-[65px] px-6 md:px-4 py-12 overflow-hidden">
-      <h2 className="w-full [font-family:'Roboto',Helvetica] font-semibold text-[#1babc6] text-xl md:text-2xl lg:text-[37px] text-center tracking-[0] leading-[normal]">
+      <h2 className="w-full font-semibold text-[#1babc6] text-xl md:text-2xl lg:text-[37px] text-center tracking-[0] leading-[normal]">
         {t("philosophy.title")}
       </h2>
 
@@ -44,11 +44,11 @@ export const ContactFormSection = (): JSX.Element => {
               } text-center md:text-left ${isRTL ? "md:text-right" : ""}`}
             >
               <div className={`flex flex-col flex-1 items-center md:items-start gap-4 md:gap-6 lg:gap-[27px] ${isRTL ? "md:items-end" : ""}`}>
-                <h3 className="w-full [font-family:'Montserrat',Helvetica] font-semibold text-[#2a24a3] text-xl md:text-2xl lg:text-[38px] tracking-[0] leading-tight md:leading-[normal]">
+                <h3 className="w-full font-semibold text-[#2a24a3] text-xl md:text-2xl lg:text-[38px] tracking-[0] leading-tight md:leading-[normal]">
                   {item.title}
                 </h3>
 
-                <p className="w-full [font-family:'Montserrat',Helvetica] font-medium text-[#6f797b] text-base md:text-lg lg:text-3xl tracking-[0] leading-normal">
+                <p className="w-full font-medium text-[#6f797b] text-base md:text-lg lg:text-3xl tracking-[0] leading-normal">
                   {item.description}
                 </p>
               </div>

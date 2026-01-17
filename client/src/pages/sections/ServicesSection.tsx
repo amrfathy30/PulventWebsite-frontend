@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const projectImages = [
+const Images1 = [
   {
     src: "/figmaAssets/rectangle-2027.png",
     alt: "Rectangle",
@@ -20,6 +20,9 @@ const projectImages = [
     alt: "Rectangle",
     className: "",
   },
+
+];
+const Images2 = [
   {
     src: "/figmaAssets/rectangle-2030.png",
     alt: "Rectangle",
@@ -41,7 +44,8 @@ const projectImages = [
 export const ServicesSection = (): JSX.Element => {
   const [activeTab, setActiveTab] = useState("all");
   const { isRTL, t } = useLanguage();
-
+  const projectImages = isRTL ?[...Images1].reverse():Images1
+  const projectImages2 = isRTL ?[...Images2].reverse():Images2
   const filterTabs = [
     { id: "all", label: t("work.all") },
     { id: "mobile", label: t("work.mobile") },
@@ -55,27 +59,27 @@ export const ServicesSection = (): JSX.Element => {
     <section className="flex flex-col w-full items-center gap-10 md:gap-16 lg:gap-[86px] py-12 px-4 overflow-hidden">
       <div className="inline-flex flex-col items-center gap-6 md:gap-[30px] w-full">
         <div className="flex justify-center">
-          <h2 className="[font-family:'Roboto',Helvetica] font-semibold text-[#1babc6] text-xl md:text-2xl lg:text-[37px] text-center whitespace-nowrap tracking-[0] leading-[normal]">
+          <h2 className="font-semibold text-[#1babc6] text-xl md:text-2xl lg:text-[37px] text-center whitespace-nowrap tracking-[0] leading-[normal]">
             {t("work.title")}
           </h2>
         </div>
 
-        <nav className={`flex w-full max-w-[652px] items-center justify-center md:justify-between flex-wrap gap-2 px-2 py-2 md:pl-1.5 md:pr-[35px] md:py-1.5 bg-[#ffffff] rounded-xl md:rounded-[100000px] shadow-[0px_0px_2px_#00000040] ${isRTL ? "md:flex-row-reverse md:pr-1.5 md:pl-[35px]" : ""}`}>
+        <nav className={`flex w-full max-w-[652px] items-center justify-center md:justify-between flex-wrap gap-2 px-1.5 bg-[#ffffff] rounded-xl md:rounded-[100000px] shadow-[0px_0px_2px_#00000040]`}>
           {filterTabs.map((tab) => (
             <Button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               variant="ghost"
-              className={`h-8 md:h-9 lg:h-auto ${
+              className={` h-8 md:h-9 lg:h-auto ${
                 activeTab === tab.id
                   ? "bg-[#2a24a3] rounded-[110px] hover:bg-[#2a24a3]"
                   : ""
               } px-3 md:px-4 py-1 lg:p-2.5`}
             >
               <span
-                className={`[font-family:'Montserrat',Helvetica] ${
+                className={`${
                   activeTab === tab.id
-                    ? "font-semibold text-[#ffffff] text-xs md:text-sm lg:text-[19px]"
+                    ? "min-w-[120px] font-semibold text-[#ffffff] text-xs md:text-sm lg:text-[19px]"
                     : "font-medium text-[#2a24a3] text-xs md:text-sm lg:text-lg"
                 } tracking-[0] leading-[normal]`}
               >
@@ -95,7 +99,23 @@ export const ServicesSection = (): JSX.Element => {
               src={project.src}
             />
             {project.hasTaxik && (
-              <div className="absolute bottom-4 md:bottom-8 lg:bottom-[91px] left-1/2 -translate-x-1/2 [font-family:'Roboto',Helvetica] font-semibold text-[#ffffff] text-lg md:text-2xl lg:text-[39px] text-center tracking-[0] leading-tight md:leading-relaxed lg:leading-[55px] whitespace-nowrap bg-black/40 md:bg-black/20 lg:bg-transparent px-4 py-2 rounded-lg backdrop-blur-sm md:backdrop-blur-none">
+              <div className="absolute bottom-4 md:bottom-8 lg:bottom-[91px] left-1/2 -translate-x-1/2 font-semibold text-[#ffffff] text-lg md:text-2xl lg:text-[39px] text-center tracking-[0] leading-tight md:leading-relaxed lg:leading-[55px] whitespace-nowrap bg-black/40 md:bg-black/20 lg:bg-transparent px-4 py-2 rounded-lg backdrop-blur-sm md:backdrop-blur-none">
+                {t("work.taxik")}
+              </div>
+            )}
+            
+            
+          </div>
+        ))}
+           {projectImages2.map((project, index) => (
+          <div key={index} className="relative w-full aspect-square group overflow-hidden rounded-[17px]">
+            <img
+              className={`w-full h-full transition-transform duration-300 group-hover:scale-105 ${project.className}`}
+              alt={project.alt}
+              src={project.src}
+            />
+            {project.hasTaxik && (
+              <div className="absolute bottom-4 md:bottom-8 lg:bottom-[91px] left-1/2 -translate-x-1/2 font-semibold text-[#ffffff] text-lg md:text-2xl lg:text-[39px] text-center tracking-[0] leading-tight md:leading-relaxed lg:leading-[55px] whitespace-nowrap bg-black/40 md:bg-black/20 lg:bg-transparent px-4 py-2 rounded-lg backdrop-blur-sm md:backdrop-blur-none">
                 {t("work.taxik")}
               </div>
             )}
