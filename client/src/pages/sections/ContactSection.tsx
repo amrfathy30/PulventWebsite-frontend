@@ -5,65 +5,75 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const partnerLogos = [
-  {
-    src: "/figmaAssets/image-3.png",
-    alt: "Microsoft Dynamics 365",
-    className: "w-[175.19px] h-[52.89px]",
-    description:"A premier enterprise-grade solution that unifies CRM and ERP capabilities by leveraging the Microsoft ecosystem. It is designed for organizations seeking deep integration with Office 365 and Power BI, utilizing built-in Al to drive executive-level decision-making.",
-  },
-  {
-    src: "/figmaAssets/image-4.png",
-    alt: "Odoo",
-    className: "w-[166.54px] h-[55.51px] object-cover",
-    description:`A versatile, user-friendly "all-in-one" platform. Its modular structure allows businesses to start with essential apps—like Inventory or Accounting— and add integrated functionalities as they grow, making it ideal for highly specific, custom workflows`
-  },
-  {
-    src: "/figmaAssets/11-1.png",
-    alt: "ERPNext",
-    className: "w-[127.63px] h-[41.19px] object-cover",
-     description:`A comprehensive, open-source ERP tailored for agility and transparency. Built for manufacturing and distribution, it provides a "single pane-of-glass" view of everything from payroll to asset tracking, prioritizing cost efficiency and functional depth`
-  },
-  {
-    src: "/figmaAssets/11-2.png",
-    alt: "CRM Systems (Vtiger)",
-    className: "w-[169.86px] h-[30.8px]",
-     description:`A specialized platform designed to bridge marketing, sales, and support. It provides a 360-degree view of the customer journey, enabling automated lead scoring and personalized service to improve long-term retention.`
-  },
-];
-const partnerLogos2 = [
-  {
-    src: "/figmaAssets/image_3.png",
-    alt: "Grandstream",
-    className: "w-[175.19px] h-[52.89px]",
-    description:"Grandstream Networks is a manufacturer of IP voice and video communications equipment, video surveillance, gateways and analog telephone adapters, and Asterisk-based IP-PBX appliances. Grandstream supplies small and medium businesses and consumers with open-standard SIP-based products.",
-  },
-  {
-    src: "/figmaAssets/image_4.png",
-    alt: "Yeastar",
-    className: "w-[166.54px] h-[55.51px] object-cover",
-    description:`Yeastar is committed to helping customers remove the barriers to a connected and collaborative digital workplace. Through our easy-to-adopt, easy-to-use, and easy-to-manage solutions, we embark our customers on an easy and pleasant digital transformation journey.`
-  },
-  {
-    src: "/figmaAssets/11_1.png",
-    alt: "FreePBX",
-    className: "w-[127.63px] h-[41.19px] object-cover",
-    description:`FreePBX is an open source community Completely free to download and use, the power of FreePBX comes from a global community of developers who ensure it remains a high compatibility and customizable platform with all the key features needed to build a scalable business phone system on any budget. With millions of installations worldwide and a very active development base, the FreePBX community continues to out-perform the telecom industry’s commercial efforts.`
-  },
-  {
-    src: "/figmaAssets/11_2.png",
-    alt: "Issabel",
-    className: "w-[169.86px] h-[30.8px]",
-     description:`Issabel is an open-source project that continues to evolve thanks to the collaboration of companies and technology enthusiasts. Since its inception, Issabel has been adopted by professionals from various countries who share the vision of an open and continuously improving Unified Communications platform. Companies, developers, and users contribute with ideas, feedback, and expertise to strengthen its ecosystem`
-  },
-];
+
 
 export const ContactSection = (): JSX.Element => {
-  const { isRTL, t } = useLanguage();
+  const { isRTL, t  } = useLanguage();
   const [activeService, setActiveService] = useState("software");
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [sheetService, setSheetService] = useState<string | null>(null);
-
+  const partnerLogos = [
+    {
+      src: "/figmaAssets/image-3.png",
+      alt: "Microsoft Dynamics 365",
+      className: "w-[175.19px] h-[52.89px]",
+      description:
+      isRTL?"حلٌّ رائدٌ على مستوى المؤسسات، يوحّد إمكانيات إدارة علاقات العملاء (CRM) وتخطيط موارد المؤسسات (ERP) بالاستفادة من منظومة مايكروسوفت. صُمّم هذا الحل للمؤسسات التي تسعى إلى تكاملٍ عميقٍ مع Office 365 وPower BI، مستخدماً تقنيات الذكاء الاصطناعي المدمجة لدعم عملية اتخاذ القرارات على مستوى الإدارة العليا.":
+       "A premier enterprise-grade solution that unifies CRM and ERP capabilities by leveraging the Microsoft ecosystem. It is designed for organizations seeking deep integration with Office 365 and Power BI, utilizing built-in Al to drive executive-level decision-making.",
+    },
+    {
+      src: "/figmaAssets/image-4.png",
+      alt: "Odoo",
+      className: "w-[166.54px] h-[55.51px] object-cover",
+      description: isRTL?`منصة "متكاملة" متعددة الاستخدامات وسهلة الاستخدام. يسمح هيكلها المعياري للشركات بالبدء بالتطبيقات الأساسية - مثل إدارة المخزون أو المحاسبة - وإضافة وظائف متكاملة مع نمو أعمالها، مما يجعلها مثالية لسير العمل المخصص والمحدد للغاية.`:
+      `A versatile, user-friendly "all-in-one" platform. Its modular structure allows businesses to start with essential apps—like Inventory or Accounting— and add integrated functionalities as they grow, making it ideal for highly specific, custom workflows`
+    },
+    {
+      src: "/figmaAssets/11-1.png",
+      alt: "ERPNext",
+      className: "w-[127.63px] h-[41.19px] object-cover",
+       description: isRTL?"نظام تخطيط موارد المؤسسات (ERP) شامل ومفتوح المصدر، مصمم خصيصاً لتحقيق المرونة والشفافية. تم تطويره خصيصاً للتصنيع والتوزيع، ويوفر رؤية شاملة لكل شيء بدءاً من الرواتب وحتى تتبع الأصول، مع إعطاء الأولوية لكفاءة التكلفة والعمق الوظيفي.":
+       `A comprehensive, open-source ERP tailored for agility and transparency. Built for manufacturing and distribution, it provides a "single pane-of-glass" view of everything from payroll to asset tracking, prioritizing cost efficiency and functional depth`
+    },
+    {
+      src: "/figmaAssets/11-2.png",
+      alt: "CRM Systems (Vtiger)",
+      className: "w-[169.86px] h-[30.8px]",
+       description: isRTL?"نظام تخطيط موارد المؤسسات (ERP) شامل ومفتوح المصدر، مصمم خصيصاً لتحقيق المرونة والشفافية. تم تطويره خصيصاً للتصنيع والتوزيع، ويوفر رؤية شاملة لكل شيء بدءاً من الرواتب وحتى تتبع الأصول، مع إعطاء الأولوية لكفاءة التكلفة والعمق الوظيفي.":
+       `A specialized platform designed to bridge marketing, sales, and support. It provides a 360-degree view of the customer journey, enabling automated lead scoring and personalized service to improve long-term retention.`
+    },
+  ];
+  const partnerLogos2 = [
+    {
+      src: "/figmaAssets/image_3.png",
+      alt: "Grandstream",
+      className: "w-[175.19px] h-[52.89px]",
+      description:isRTL?
+      "تُعدّ شركة Grandstream Networks شركة مصنّعة لمعدات الاتصالات الصوتية والمرئية عبر بروتوكول الإنترنت، وأنظمة المراقبة بالفيديو، والبوابات، ومحولات الهاتف التناظرية، وأجهزة IP-PBX القائمة على نظام Asterisk. وتزود Grandstream الشركات الصغيرة والمتوسطة الحجم والمستهلكين بمنتجات قائمة على معيار SIP المفتوح.":
+      "Grandstream Networks is a manufacturer of IP voice and video communications equipment, video surveillance, gateways and analog telephone adapters, and Asterisk-based IP-PBX appliances. Grandstream supplies small and medium businesses and consumers with open-standard SIP-based products.",
+    },
+    {
+      src: "/figmaAssets/image_4.png",
+      alt: "Yeastar",
+      className: "w-[166.54px] h-[55.51px] object-cover",
+      description:isRTL?`تلتزم شركة Yestar بمساعدة عملائها على إزالة العوائق التي تحول دون إنشاء بيئة عمل رقمية متصلة وتعاونية. ومن خلال حلولنا سهلة التبني والاستخدام والإدارة، نساعد عملائنا على خوض رحلة تحول رقمي سهلة وممتعة.`:
+      `Yeastar is committed to helping customers remove the barriers to a connected and collaborative digital workplace. Through our easy-to-adopt, easy-to-use, and easy-to-manage solutions, we embark our customers on an easy and pleasant digital transformation journey.`
+    },
+    {
+      src: "/figmaAssets/11_1.png",
+      alt: "FreePBX",
+      className: "w-[127.63px] h-[41.19px] object-cover",
+      description:isRTL?`FreePBX هو مشروع مفتوح المصدر، مجاني تمامًا للتنزيل والاستخدام. تستمد FreePBX قوتها من مجتمع عالمي من المطورين الذين يضمنون بقاءها منصة عالية التوافق وقابلة للتخصيص، مع جميع الميزات الأساسية اللازمة لبناء نظام هاتف أعمال قابل للتطوير مهما كانت الميزانية. مع ملايين عمليات التثبيت حول العالم وقاعدة تطوير نشطة للغاية، يواصل مجتمع FreePBX التفوق على الجهود التجارية لقطاع الاتصالات.`:
+      `FreePBX is an open source community Completely free to download and use, the power of FreePBX comes from a global community of developers who ensure it remains a high compatibility and customizable platform with all the key features needed to build a scalable business phone system on any budget. With millions of installations worldwide and a very active development base, the FreePBX community continues to out-perform the telecom industry’s commercial efforts.`
+    },
+    {
+      src: "/figmaAssets/11_2.png",
+      alt: "Issabel",
+      className: "w-[169.86px] h-[30.8px]",
+       description:isRTL?`إيزابيل مشروع مفتوح المصدر يتطور باستمرار بفضل تعاون الشركات وعشاق التكنولوجيا. منذ انطلاقه، اعتمد إيزابيل متخصصون من مختلف البلدان ممن يتشاركون رؤية منصة اتصالات موحدة مفتوحة ومتطورة باستمرار. وتساهم الشركات والمطورون والمستخدمون بأفكارهم وملاحظاتهم وخبراتهم لتعزيز منظومته.`:
+       `Issabel is an open-source project that continues to evolve thanks to the collaboration of companies and technology enthusiasts. Since its inception, Issabel has been adopted by professionals from various countries who share the vision of an open and continuously improving Unified Communications platform. Companies, developers, and users contribute with ideas, feedback, and expertise to strengthen its ecosystem`
+    },
+  ];
   // Helper function to render title with alternating font weights
   const renderTitleWithAlternatingWeights = (title: string) => {
     const words = title.split(" ");
@@ -323,46 +333,6 @@ export const ContactSection = (): JSX.Element => {
 
               {/* IT Services More Details Card */}
               {activeService === "it-services" && (
-                // <Card className="w-full rounded-[20px] border border-solid border-[#f0e2e2]">
-                //   <CardContent className={`flex flex-col lg:flex-row items-center gap-8 px-6 md:px-[41px] py-8 md:py-[31px] `}>
-                //     <div className="w-[80px] h-[80px] md:w-[114px] md:h-[114px] bg-[#f6f6f6] rounded-full flex items-center justify-center flex-shrink-0">
-                //       <img
-                //         className="w-[50px] h-[50px] md:w-[69.66px] md:h-[69.66px] object-cover"
-                //         alt="IT Services"
-                //         src="/figmaAssets/automation.png"
-                //       />
-                //     </div>
-
-                //     <div className={`flex flex-col items-center lg:items-start justify-center gap-6 md:gap-[41px] flex-1 text-center lg:text-left ${isRTL ? "lg:items-end lg:text-right" : ""}`}>
-                //       <div className={`flex flex-col items-center lg:items-start justify-center gap-4 md:gap-[21px] w-full ${isRTL ? "lg:items-end" : ""}`}>
-                //         <h4 className="w-full font-semibold text-[#2a24a3] text-xl md:text-[27px] tracking-[0] leading-[normal]">
-                //           {t("services.it.title")}
-                //         </h4>
-
-                //         <p className="font-medium text-[#6f7a7c] text-base md:text-2xl tracking-[0] leading-[normal]">
-                //           {t("services.it.desc")}
-                //         </p>
-                //       </div>
-                //     </div>
-
-                //     <Button 
-                //       onClick={() => {
-                //         setSheetService("it-services");
-                //         setIsSheetOpen(true);
-                //       }}
-                //       className={`w-full md:w-[213px] h-12 md:h-[55px] bg-[#2a24a3] rounded-[110px] flex items-center justify-center gap-2.5 p-2.5 hover:bg-[#2a24a3]/90`}
-                //     >
-                //       <span className="font-medium text-[#ffffff] text-lg md:text-[21px] tracking-[0] leading-[normal]">
-                //         {t("services.moreDetails")}
-                //       </span>
-                //       <img
-                //         className={`w-6 h-6 md:w-[29px] md:h-[29px] ${isRTL ? "rotate-180" : ""}`}
-                //         alt="Iconoir arrow up"
-                //         src="/figmaAssets/iconoir-arrow-up-circle.svg"
-                //       />
-                //     </Button>
-                //   </CardContent>
-                // </Card>
                 <Card className="w-full rounded-[20px] border border-solid border-[#f0e2e2]">
                 <CardContent className={`flex flex-col lg:flex-row items-center gap-8 px-6 md:px-[41px] py-8 md:py-[31px] `}>
                   <div className="w-[80px] h-[80px] md:w-[114px] md:h-[114px] bg-[#f6f6f6] rounded-full flex items-center justify-center flex-shrink-0">
@@ -396,7 +366,7 @@ export const ContactSection = (): JSX.Element => {
 
                   <Button 
                     onClick={() => {
-                      setSheetService("software");
+                      setSheetService("it-services");
                       setIsSheetOpen(true);
                     }}
                     className={`w-full md:w-[213px] h-12 md:h-[55px] bg-[#2a24a3] rounded-[110px] flex items-center justify-center gap-2.5 p-2.5 hover:bg-[#2a24a3]/90`}
@@ -421,7 +391,7 @@ export const ContactSection = (): JSX.Element => {
 
     <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
       <SheetContent side={isRTL ? "left" : "right"} className="w-full sm:max-w-2xl overflow-y-auto">
-        {sheetService != "it-services" ? (
+        {sheetService === "it-services" ? (
           <>
             <div className={`flex flex-col gap-8 mt-8 ${isRTL ? "items-end text-right" : ""}`}>
               <div className={`flex flex-col gap-6 ${isRTL ? "items-end" : ""}`}>

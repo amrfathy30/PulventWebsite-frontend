@@ -104,7 +104,7 @@ export const AboutSection = (): JSX.Element => {
                   />
                   <span className={`text-start font-normal text-black text-base md:text-[23px] tracking-[0] leading-snug md:leading-[33.4px] `}
                     style={{
-                      direction: isRTL&&index==2 ? 'ltr' : "rtl"
+                      direction: index==2 ? 'ltr' : "rtl"
                     }}
                   >
                     {item.text}
@@ -181,7 +181,7 @@ export const AboutSection = (): JSX.Element => {
                     required
                   />
                  {formData.name?"": 
-                 <span className={`absolute top-4 md:top-[21px] ${isRTL ? "right-20 md:right-[160px]" : "left-20 md:left-[100px]"} font-normal text-red text-base md:text-lg`}>
+                 <span className={`absolute top-4 md:top-[21px] ${isRTL ? "right-20 md:right-[80px]" : "left-20 md:left-[100px]"} font-normal text-red text-base md:text-lg`}>
                     *
                   </span>
                   }
@@ -216,7 +216,7 @@ export const AboutSection = (): JSX.Element => {
                     required
                   />
                   {formData.message?"":
-                  <span className={`absolute top-4 md:top-[15px] ${isRTL ? "right-20 md:right-[160px]" : "left-24 md:left-[130px]"} font-normal text-red text-base md:text-lg`}>
+                  <span className={`absolute top-4 md:top-[15px] ${isRTL ? "right-20 md:right-[90px]" : "left-24 md:left-[130px]"} font-normal text-red text-base md:text-lg`}>
                     *
                   </span>
                   }
