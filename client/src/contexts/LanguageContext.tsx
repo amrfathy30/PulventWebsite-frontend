@@ -137,6 +137,10 @@ const translations = {
     "contact.email": "Email",
     "contact.message": "Message",
     "contact.submit": "Submit",
+    "contact.loading":"Sending...",
+    "contact.success":"Message sent! We will get back to you soon.",
+    "contact.error":"Failed to send message. Please try again.",
+
 
     // Footer
     "footer.description": "Manage Customers, Automate Tasks, Collaborate With Your Team, And Keep All Operations In One Smart Platform.",
@@ -283,6 +287,9 @@ const translations = {
     "contact.email": "البريد الإلكتروني",
     "contact.message": "الرسالة",
     "contact.submit": "إرسال",
+    "contact.loading":"جاري الارسال...",
+    "contact.success":"تم الإرسال بنجاح! سوف نقوم بالتواصل معك في اقرب وقت.",
+    "contact.error":"فشل في ارسال رسالتك برجاء المحاوله مره اخري",
 
     // Footer
     "footer.description": "إدارة العملاء، وأتمتة المهام، والتعاون مع فريقك، وتنظيم جميع عملياتك في منصة ذكية واحدة.",

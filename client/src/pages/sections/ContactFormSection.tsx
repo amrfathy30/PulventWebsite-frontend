@@ -25,7 +25,7 @@ export const ContactFormSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="flex flex-col w-full items-center gap-10 md:gap-14 lg:gap-[65px] px-6 md:px-4 py-12 overflow-hidden">
+    <section id="core-philosophy" className="flex flex-col w-full items-center gap-10 md:gap-14 lg:gap-[65px] px-6 md:px-4 py-12 overflow-hidden">
       <h2 className="w-full font-semibold text-[#1babc6] text-xl md:text-2xl lg:text-[37px] text-center tracking-[0] leading-[normal]">
         {t("philosophy.title")}
       </h2>

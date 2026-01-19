@@ -42,7 +42,7 @@ export const FooterSection = (): JSX.Element => {
             </p>
           </div>
 
-          <div className={`flex  items-start justify-center gap-8 md:gap-[85px]`}>
+          <div className={`hidden md:flex items-start justify-center gap-8 md:gap-[85px]`}>
             <nav className={`flex flex-col items-center lg:items-start gap-4 md:gap-[17px]`}>
               <h3 className="font-normal text-[#221c9d] text-lg md:text-xl tracking-[0] leading-[normal] whitespace-nowrap">
                 {t("footer.pages")}

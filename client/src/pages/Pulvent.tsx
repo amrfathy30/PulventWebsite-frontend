@@ -13,7 +13,7 @@ export const Pulvent = (): JSX.Element => {
       <div id="services"><ContactSection /></div>
       <div id="about"><FeaturesSection /></div>
       <div id="portfolio"><ServicesSection /></div>
-      <div id="why-us"><FeaturesSection /></div>
+      <div id="why-us"><ContactFormSection /></div>
       <div id="contact"><AboutSection /></div>
       <FooterSection />
     </div>

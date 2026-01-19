@@ -3,22 +3,26 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Tabs, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
 
 const Images1 = [
   {
     src: "/figmaAssets/rectangle-2027.png",
     alt: "Rectangle",
     className: "rounded-[17px] object-cover",
+    hasTaxik: false,
   },
   {
     src: "/figmaAssets/rectangle-2028.png",
     alt: "Rectangle",
     className: "",
+    hasTaxik: false,
   },
   {
     src: "/figmaAssets/rectangle-2029.png",
     alt: "Rectangle",
     className: "",
+    hasTaxik: false,
   },
 
 ];
@@ -27,11 +31,13 @@ const Images2 = [
     src: "/figmaAssets/rectangle-2030.png",
     alt: "Rectangle",
     className: "",
+    hasTaxik: false,
   },
   {
     src: "/figmaAssets/rectangle-2031.png",
     alt: "Rectangle",
     className: "",
+    hasTaxik: false,
   },
   {
     src: "/figmaAssets/rectangle-2032.png",
@@ -63,34 +69,22 @@ export const ServicesSection = (): JSX.Element => {
             {t("work.title")}
           </h2>
         </div>
-
-        <nav className={`flex w-full max-w-[652px] items-center justify-center md:justify-between flex-wrap gap-2 px-1.5 bg-[#ffffff] rounded-xl md:rounded-[100000px] shadow-[0px_0px_2px_#00000040]`}>
-          {filterTabs.map((tab) => (
-            <Button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              variant="ghost"
-              className={` h-8 md:h-9 lg:h-auto ${
-                activeTab === tab.id
-                  ? "bg-[#2a24a3] rounded-[110px] hover:bg-[#2a24a3]"
-                  : ""
-              } px-3 md:px-4 py-1 lg:p-2.5`}
-            >
-              <span
-                className={`${
-                  activeTab === tab.id
-                    ? "min-w-[120px] font-semibold text-[#ffffff] text-xs md:text-sm lg:text-[19px]"
-                    : "font-medium text-[#2a24a3] text-xs md:text-sm lg:text-lg"
-                } tracking-[0] leading-[normal]`}
-              >
-                {tab.label}
-              </span>
-            </Button>
-          ))}
-        </nav>
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full md:max-w-[759px]">
+            <TabsList className={`w-full h-auto md:h-12 lg:h-[63px] bg-[#ffffff] rounded-xl md:rounded-[100000px] shadow-0 md:shadow-[0px_0px_2px_#00000040] p-1.5 flex md:flex-wrap justify-start md:justify-between gap-3 md:gap-1 overflow-auto ${isRTL ? "md:flex-row-reverse" : ""}`}>
+              {filterTabs.map((tab) => (
+                <TabsTrigger
+                  key={tab.id}
+                  value={tab.id}
+                  className={`w-fit md:bg-transparent h-9 md:h-10 lg:h-[51px] px-2.5 md:px-3 lg:px-2.5 rounded-[110px] text-xs md:text-sm lg:text-lg tracking-[0] leading-[normal] data-[state=active]:bg-[#2a24a3] data-[state=active]:text-[#ffffff] data-[state=active]:font-semibold data-[state=active]:text-sm md:data-[state=active]:text-base lg:data-[state=active]:text-[19px]  data-[state=inactive]:bg-[#E8F0F2] md:data-[state=inactive]:bg-transparent data-[state=inactive]:text-[#2a24a3] data-[state=inactive]:font-medium`}
+                >
+                  {tab.label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </Tabs>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-[9px] w-full max-w-[1316px]">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-[9px] w-full max-w-[1316px]">
         {projectImages.map((project, index) => (
           <div key={index} className="relative w-full aspect-square group overflow-hidden rounded-[17px]">
             <img

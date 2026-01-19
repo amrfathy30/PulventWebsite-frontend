@@ -169,12 +169,12 @@ export const ContactSection = (): JSX.Element => {
 
         <div className="flex flex-col items-center gap-6 md:gap-12 lg:gap-[66px] w-full">
           <Tabs value={activeService} onValueChange={setActiveService} className="w-full max-w-[759px]">
-            <TabsList className={`w-full h-auto md:h-12 lg:h-[63px] bg-[#ffffff] rounded-xl md:rounded-[100000px] shadow-[0px_0px_2px_#00000040] p-1.5 flex flex-wrap justify-center md:justify-between gap-1 ${isRTL ? "md:flex-row-reverse" : ""}`}>
+            <TabsList className={`w-full h-auto md:h-12 lg:h-[63px] bg-[#ffffff] rounded-xl md:rounded-[100000px] shadow-0 md:shadow-[0px_0px_2px_#00000040] p-1.5 flex md:flex-wrap justify-start md:justify-between gap-3 md:gap-1 overflow-auto ${isRTL ? "md:flex-row-reverse" : ""}`}>
               {tabItems.map((tab) => (
                 <TabsTrigger
                   key={tab.id}
                   value={tab.id}
-                  className={`h-9 md:h-10 lg:h-[51px] px-2.5 md:px-3 lg:px-2.5 rounded-[110px] text-xs md:text-sm lg:text-lg tracking-[0] leading-[normal] data-[state=active]:bg-[#2a24a3] data-[state=active]:text-[#ffffff] data-[state=active]:font-semibold data-[state=active]:text-sm md:data-[state=active]:text-base lg:data-[state=active]:text-[19px] data-[state=inactive]:bg-transparent data-[state=inactive]:text-[#2a24a3] data-[state=inactive]:font-medium`}
+                  className={`md:bg-transparent h-9 md:h-10 lg:h-[51px] px-2.5 md:px-3 lg:px-2.5 rounded-[110px] text-xs md:text-sm lg:text-lg tracking-[0] leading-[normal] data-[state=active]:bg-[#2a24a3] data-[state=active]:text-[#ffffff] data-[state=active]:font-semibold data-[state=active]:text-sm md:data-[state=active]:text-base lg:data-[state=active]:text-[19px]  data-[state=inactive]:bg-[#E8F0F2] md:data-[state=inactive]:bg-transparent data-[state=inactive]:text-[#2a24a3] data-[state=inactive]:font-medium`}
                 >
                   {tab.label}
                 </TabsTrigger>
@@ -183,7 +183,7 @@ export const ContactSection = (): JSX.Element => {
           </Tabs>
 
           <div className="flex flex-col items-start gap-6 md:gap-12 lg:gap-[57px] w-full">
-            <div className={`flex ${currentService?.cards?'flex-col md:flex-row':"flex-col-reverse"} items-center gap-6 md:gap-10 lg:gap-[49px] w-full`}>
+            <div className={`flex ${currentService?.cards?'flex-col-reverse md:flex-row':"flex-col-reverse"} items-center gap-6 md:gap-10 lg:gap-[49px] w-full`}>
               <div className={`flex flex-col ${currentService?.cards?'fw-full md:max-w-[666px] items-center md:items-start text-center md:text-left ':"w-[80%] items-center text-center"}  gap-4`}>
                 <h3 className={`${isRTL ? "flex space-x-[2px]" : ""} max-w-[450px] text-start w-full font-bold text-[#2a24a3] text-xl md:text-3xl lg:text-[42px] tracking-[0] leading-tight md:leading-[normal]`}>
                   {/* {currentService.title} */}

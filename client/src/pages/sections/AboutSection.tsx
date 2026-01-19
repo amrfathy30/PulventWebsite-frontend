@@ -3,7 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useLanguage } from "@/contexts/LanguageContext";
-
+import { useState } from "react";
+import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
 const contactInfo = [
   {
     icon: "/figmaAssets/email.png",
@@ -24,9 +26,54 @@ const contactInfo = [
 
 export const AboutSection = (): JSX.Element => {
   const { isRTL, t } = useLanguage();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
 
+  const [status, setStatus] = useState('idle'); // idle, loading, success, error
+
+  const handleChange = (e: any) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setStatus('loading');
+
+    try {
+      const response = await axios.post('https://default3542a03d5db84a18b59660029739b2.55.environment.api.powerplatform.com/powerautomate/automations/direct/workflows/03ca626e2c3e4f4594da6af4c9ef545c/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=vm6on4oIxWRf4FB_SSJtFMp2OxitSr1xNgM4CMPnXik', formData);
+
+      if (response.status === 200 || response.status === 201|| response.status === 202) {
+        setStatus('success');
+        toast.success(t('contact.success'));
+        setFormData({ name: '', email: '', message: '' });
+      }
+    } catch (err: any) {
+      toast.success(t('contact.error'));
+      console.error("Axios Error:", err.response?.data || err.message);
+      setStatus('error');
+    }
+  };
   return (
     <section id="contact-us" className="flex flex-col w-full items-center gap-12 md:gap-[78px] py-12 px-6 overflow-hidden">
+     <Toaster position="bottom-right" reverseOrder={false} 
+     toastOptions={{
+      duration: 10000, 
+      style: {
+        background: '#363636',
+        color: '#fff',
+      },
+      success: {
+        duration: 10000,
+        iconTheme: {
+          primary: 'green',
+          secondary: 'white',
+        },
+      },
+    }}
+    />
       <div className="w-full flex justify-center">
         <h2 className="font-semibold text-[#1babc6] text-2xl md:text-[37px] text-center tracking-[0] leading-[normal] whitespace-nowrap">
           {t("contact.title")}
@@ -55,10 +102,10 @@ export const AboutSection = (): JSX.Element => {
                     alt={`Contact ${index}`}
                     src={item.icon}
                   />
-                  <span className={`font-normal text-black text-base md:text-[23px] tracking-[0] leading-snug md:leading-[33.4px] `}
-                  style={{
-                    direction:isRTL?'ltr':"rtl"
-                  }}
+                  <span className={`text-start font-normal text-black text-base md:text-[23px] tracking-[0] leading-snug md:leading-[33.4px] `}
+                    style={{
+                      direction: isRTL&&index==2 ? 'ltr' : "rtl"
+                    }}
                   >
                     {item.text}
                   </span>
@@ -66,58 +113,58 @@ export const AboutSection = (): JSX.Element => {
               ))}
             </div>
 
-           <div className="w-full flex gap-x-4" >
-           <a 
-           href="https://www.facebook.com/pulvent/"
-            target="_blank"
-            >
-           <img
-              className="w-[68px] aspect-[1/1]"
-              alt="Social media icons"
-              src="/figmaAssets/faceBookLG.svg"
-            />
-            </a>
-           <a 
-            href="https://www.instagram.com/pulvent_technologies"
-            target="_blank"
-            >
-           <img
-              className="w-[68px] aspect-[1/1]"
-              alt="Social media icons"
-              src="/figmaAssets/instagram.svg"
-            />
-            </a>
-              <a 
-            href="https://www.tiktok.com/@pulvent"
-            target="_blank"
-            >
-              <img
-              className="w-[68px] aspect-[1/1]"
-              alt="Social media icons"
-              src="/figmaAssets/tiktok.svg"
-            />
-             </a>
-              <a 
-            href="https://www.linkedin.com/company/pulvent/"
-            target="_blank"
-            >
-             <img
-              className="w-[68px] aspect-[1/1]"
-              alt="Social media icons"
-              src="/figmaAssets/linkedIn.svg"
-            />
-             </a>
-              <a 
-            href="https://wa.me/+201550009295"
-            target="_blank"
-            >
-              <img
-              className="w-[68px] aspect-[1/1]"
-              alt="Social media icons"
-              src="/figmaAssets/whatsapp.svg"
-            />
-            </a>
-             </div>
+            <div className="w-full flex gap-x-4" >
+              <a
+                href="https://www.facebook.com/pulvent/"
+                target="_blank"
+              >
+                <img
+                  className="w-[68px] aspect-[1/1]"
+                  alt="Social media icons"
+                  src="/figmaAssets/faceBookLG.svg"
+                />
+              </a>
+              <a
+                href="https://www.instagram.com/pulvent_technologies"
+                target="_blank"
+              >
+                <img
+                  className="w-[68px] aspect-[1/1]"
+                  alt="Social media icons"
+                  src="/figmaAssets/instagram.svg"
+                />
+              </a>
+              <a
+                href="https://www.tiktok.com/@pulvent"
+                target="_blank"
+              >
+                <img
+                  className="w-[68px] aspect-[1/1]"
+                  alt="Social media icons"
+                  src="/figmaAssets/tiktok.svg"
+                />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/pulvent/"
+                target="_blank"
+              >
+                <img
+                  className="w-[68px] aspect-[1/1]"
+                  alt="Social media icons"
+                  src="/figmaAssets/linkedIn.svg"
+                />
+              </a>
+              <a
+                href="https://wa.me/+201550009295"
+                target="_blank"
+              >
+                <img
+                  className="w-[68px] aspect-[1/1]"
+                  alt="Social media icons"
+                  src="/figmaAssets/whatsapp.svg"
+                />
+              </a>
+            </div>
           </div>
 
           <div className="w-full lg:w-[658px] flex flex-col items-start gap-4 p-0">
@@ -128,10 +175,16 @@ export const AboutSection = (): JSX.Element => {
                     placeholder={t("contact.name")}
                     className={`w-full h-14 md:h-[67px] bg-white rounded-lg border border-solid border-[#d7d7d7] px-4 md:px-[27px] font-normal text-text-color text-base md:text-[21px] ${isRTL ? "text-right" : ""}`}
                     dir={isRTL ? "rtl" : "ltr"}
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
                   />
-                  <span className={`absolute top-4 md:top-[21px] ${isRTL ? "right-20 md:right-[95px]" : "left-20 md:left-[95px]"} font-normal text-red text-base md:text-lg`}>
+                 {formData.name?"": 
+                 <span className={`absolute top-4 md:top-[21px] ${isRTL ? "right-20 md:right-[160px]" : "left-20 md:left-[100px]"} font-normal text-red text-base md:text-lg`}>
                     *
                   </span>
+                  }
                 </div>
 
                 <div className="relative w-full">
@@ -140,10 +193,16 @@ export const AboutSection = (): JSX.Element => {
                     type="email"
                     className={`w-full h-14 md:h-[67px] bg-white rounded-lg border border-solid border-[#d7d7d7] px-4 md:px-[27px] font-normal text-text-color text-base md:text-[21px] ${isRTL ? "text-right" : ""}`}
                     dir={isRTL ? "rtl" : "ltr"}
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
                   />
-                  <span className={`absolute top-4 md:top-[15px] ${isRTL ? "right-28 md:right-[150px]" : "left-18 md:left-[91px]"} font-normal text-red text-base md:text-lg`}>
+                 {formData.email?"":
+                  <span className={`absolute top-4 md:top-[15px] ${isRTL ? "right-20 md:right-[160px]" : "left-20 md:left-[100px]"} font-normal text-red text-base md:text-lg`}>
                     *
                   </span>
+                  }
                 </div>
 
                 <div className="relative w-full">
@@ -151,16 +210,36 @@ export const AboutSection = (): JSX.Element => {
                     placeholder={t("contact.message")}
                     className={`w-full h-40 md:h-[209px] bg-white rounded-lg border border-solid border-[#d7d7d7] px-4 md:px-[27px] py-4 md:py-[21px] font-normal text-text-color text-base md:text-[21px] resize-none ${isRTL ? "text-right" : ""}`}
                     dir={isRTL ? "rtl" : "ltr"}
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
                   />
+                  {formData.message?"":
+                  <span className={`absolute top-4 md:top-[15px] ${isRTL ? "right-20 md:right-[160px]" : "left-24 md:left-[130px]"} font-normal text-red text-base md:text-lg`}>
+                    *
+                  </span>
+                  }
                 </div>
 
-                <Button className={`w-full h-14 md:h-[68px] bg-[#2a24a3] hover:bg-[#2a24a3]/90 rounded-[110px] flex items-center justify-center gap-2.5 font-medium text-[#ffffff] text-lg md:text-[21px]`}>
-                  {t("contact.submit")}
-                  <img
-                  className={`w-6 h-6 md:w-[29px] md:h-[29px] ${isRTL ? "rotate-180" : ""}`}
-                  alt="Iconoir arrow up"
-                  src="/figmaAssets/iconoir-arrow-up-circle.svg"
-                />
+                <Button className={`w-full h-14 md:h-[68px] bg-[#2a24a3] hover:bg-[#2a24a3]/90 rounded-[110px] flex items-center justify-center gap-2.5 font-medium text-[#ffffff] text-lg md:text-[21px]`}
+                  disabled={!formData.message && !formData.name && !formData.email}
+                  onClick={handleSubmit}
+                >
+                  {status == 'loading' ?
+                    t("contact.loading")
+                    :
+                    <>
+                      {t("contact.submit")}
+                      <img
+                        className={`w-6 h-6 md:w-[29px] md:h-[29px] ${isRTL ? "rotate-180" : ""}`}
+                        alt="Iconoir arrow up"
+                        src="/figmaAssets/iconoir-arrow-up-circle.svg"
+
+                      />
+                    </>
+                  }
+
                 </Button>
               </div>
             </div>
