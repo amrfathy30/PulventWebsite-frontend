@@ -26,7 +26,7 @@ export const AboutSection = (): JSX.Element => {
   const { isRTL, t } = useLanguage();
 
   return (
-    <section className="flex flex-col w-full items-center gap-12 md:gap-[78px] py-12 px-6 overflow-hidden">
+    <section id="contact-us" className="flex flex-col w-full items-center gap-12 md:gap-[78px] py-12 px-6 overflow-hidden">
       <div className="w-full flex justify-center">
         <h2 className="font-semibold text-[#1babc6] text-2xl md:text-[37px] text-center tracking-[0] leading-[normal] whitespace-nowrap">
           {t("contact.title")}
@@ -67,6 +67,16 @@ export const AboutSection = (): JSX.Element => {
             </div>
 
            <div className="w-full flex gap-x-4" >
+           <a 
+           href="https://www.facebook.com/pulvent/"
+            target="_blank"
+            >
+           <img
+              className="w-[68px] aspect-[1/1]"
+              alt="Social media icons"
+              src="/figmaAssets/faceBookLG.svg"
+            />
+            </a>
            <a 
             href="https://www.instagram.com/pulvent_technologies"
             target="_blank"

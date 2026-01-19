@@ -8,13 +8,13 @@ import { ServicesSection } from "./sections/ServicesSection";
 
 export const Pulvent = (): JSX.Element => {
   return (
-    <div className="bg-[#fbf9fb] overflow-hidden w-full relative">
-      <HeroSection />
-      <ContactSection />
-      <FeaturesSection />
-      <ServicesSection />
-      <ContactFormSection />
-      <AboutSection />
+    <div className="bg-[#fbf9fb] overflow-hidden w-full relative pt-[72px] md:pt-[100px]">
+      <div id="home"><HeroSection /></div>
+      <div id="services"><ContactSection /></div>
+      <div id="about"><FeaturesSection /></div>
+      <div id="portfolio"><ServicesSection /></div>
+      <div id="why-us"><FeaturesSection /></div>
+      <div id="contact"><AboutSection /></div>
       <FooterSection />
     </div>
   );

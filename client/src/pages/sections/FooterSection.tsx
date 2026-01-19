@@ -20,7 +20,12 @@ export const FooterSection = (): JSX.Element => {
     { label: t("footer.digitalSolutions") },
     { label: t("footer.automation") },
   ];
-
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <footer className="relative w-full bg-white-background py-12 md:py-[72px] px-6 overflow-hidden">
       <div className="max-w-[1352px] mx-auto">
@@ -100,29 +105,31 @@ export const FooterSection = (): JSX.Element => {
              </a>
               <a 
                className="w-[47px] aspect-[1/1] flex items-center justify-center"
-            href=""
+             href="https://www.tiktok.com/@pulvent"
             target="_blank"
             >
              <img
               className="w-[20px] aspect-[1/1]"
               alt="Social media icons"
-              src="/figmaAssets/githab.svg"
+              src="/figmaAssets/tiktok-s.svg"
             />
              </a>
               <a 
                className="w-[47px] aspect-[1/1] flex items-center justify-center"
-            href=""
+            href="https://www.linkedin.com/company/pulvent/"
             target="_blank"
             >
               <img
               className="w-[20px] aspect-[1/1]"
               alt="Social media icons"
-              src="/figmaAssets/telelegram.svg"
+              src="/figmaAssets/linked-in.svg"
             />
             </a>
              </div>
 
-              <Button className={`w-full sm:w-auto h-12 md:h-[61px] bg-[#1babc6] hover:bg-[#1babc6]/90 flex items-center justify-center gap-2.5 px-6 md:px-4 rounded-[110px]`}>
+              <Button className={`w-full sm:w-auto h-12 md:h-[61px] bg-[#1babc6] hover:bg-[#1babc6]/90 flex items-center justify-center gap-2.5 px-6 md:px-4 rounded-[110px]`}
+              onClick={() => scrollToSection("contact-us")}
+              >
                 <span className="font-medium text-[#ffffff] text-lg md:text-[21px] tracking-[0] leading-[normal]">
                   {t("footer.getInTouch")}
                 </span>

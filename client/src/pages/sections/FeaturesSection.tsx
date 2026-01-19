@@ -4,7 +4,7 @@ export const FeaturesSection = (): JSX.Element => {
   const { t } = useLanguage();
 
   return (
-    <section className="relative w-full bg-[url(/figmaAssets/rectangle-2035.png)] bg-cover bg-center  overflow-hidden">
+    <section id="core-philosophy" className="relative w-full bg-[url(/figmaAssets/rectangle-2035.png)] bg-cover bg-center  overflow-hidden">
       <div className="w-full h-full bg-[#083841C9] py-16 md:py-24 lg:py-[156px]">
       <div className="flex flex-col w-[92%] md:w-[89.48%] max-w-[1352px] mx-auto items-center gap-6 md:gap-[34px] px-4">
         <h2 className="self-stretch font-bold text-white text-2xl md:text-3xl lg:text-[39px] text-center tracking-[0] leading-normal">

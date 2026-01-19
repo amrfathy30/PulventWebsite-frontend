@@ -1,16 +1,33 @@
 import { ChevronDownIcon } from "lucide-react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export const HeroSection = (): JSX.Element => {
   const { language, setLanguage, isRTL, t } = useLanguage();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navigationItems = [
-    { label: t("nav.service"), hasDropdown: true },
-    { label: t("nav.aboutUs"), hasDropdown: false },
-    { label: t("nav.portfolio"), hasDropdown: false },
-    { label: t("nav.whyUs"), hasDropdown: false },
+    { label: t("nav.service"), hasDropdown: true, id: "services" },
+    { label: t("nav.aboutUs"), hasDropdown: false, id: "about" },
+    { label: t("nav.portfolio"), hasDropdown: false, id: "portfolio" },
+    { label: t("nav.whyUs"), hasDropdown: false, id: "core-philosophy" },
   ];
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const toggleLanguage = () => {
     setLanguage(language === "en" ? "ar" : "en");
@@ -18,7 +35,7 @@ export const HeroSection = (): JSX.Element => {
 
   return (
     <section className="w-full relative overflow-hidden">
-      <nav className={`flex items-center justify-between gap-4 py-4 px-4 md:py-6 md:px-12`}>
+      <nav className={`fixed top-0 left-0 right-0 z-[40] flex items-center justify-between gap-4 py-4 px-4 md:py-6 md:px-12 bg-[#fbf9fb]/80 backdrop-blur-md transition-all duration-300 ${isScrolled ? "border-b border-[#2a24a3]/10" : "border-b border-transparent"}`}>
         <img
           className="w-[100px] h-auto md:w-[150.12px] md:h-[55.62px]"
           alt="Logo removebg"
@@ -26,7 +43,10 @@ export const HeroSection = (): JSX.Element => {
         />
 
         <div className={`hidden md:flex items-center justify-between p-1.5 bg-[#ffffff] rounded-[100000px] shadow-[0px_0px_2px_#00000040] gap-4`}>
-          <Button className="bg-[#2a24a3] hover:bg-[#2a24a3]/90 text-[#ffffff] rounded-[110px] h-auto px-4 py-2.5 font-bold text-[19px]">
+          <Button 
+            className="bg-[#2a24a3] hover:bg-[#2a24a3]/90 text-[#ffffff] rounded-[110px] h-auto px-4 py-2.5 font-bold text-[19px]"
+            onClick={() => scrollToSection("home")}
+          >
             {t("nav.home")}
           </Button>
 
@@ -35,9 +55,10 @@ export const HeroSection = (): JSX.Element => {
               key={index}
               variant="ghost"
               className={`text-[#2a24a3] hover:text-[#2a24a3] hover:bg-transparent font-medium text-[17px] h-auto px-2 py-0`}
+              onClick={() => scrollToSection(item.id)}
             >
               {item.label}
-              {item.hasDropdown && <ChevronDownIcon className={`w-6 h-6`} />}
+              {/* {item.hasDropdown && <ChevronDownIcon className={`w-6 h-6`} />} */}
             </Button>
           ))}
         </div>
@@ -51,7 +72,10 @@ export const HeroSection = (): JSX.Element => {
             {t("nav.langSwitch")}
           </button>
 
-          <Button className={` bg-[#2a24a3] hover:bg-[#2a24a3]/90 text-[#ffffff] rounded-[110px] h-10 md:h-[55px] px-3 md:px-4 font-medium text-sm md:text-[21px] gap-1 md:gap-2 `}>
+          <Button 
+            className={` bg-[#2a24a3] hover:bg-[#2a24a3]/90 text-[#ffffff] rounded-[110px] h-10 md:h-[55px] px-3 md:px-4 font-medium text-sm md:text-[21px] gap-1 md:gap-2 `}
+            onClick={() => scrollToSection("contact-us")}
+          >
             {t("nav.contactUs")}
             <img
               className={`w-5 h-5 md:w-[29px] md:h-[29px] ${isRTL ? "rotate-180" : ""}`}
@@ -81,7 +105,10 @@ export const HeroSection = (): JSX.Element => {
           </div>
 
           <div className={`w-full flex flex-col sm:flex-row items-center justify-start gap-4 md:gap-[25px] `}>
-            <Button className={`w-full sm:w-auto bg-[#2a24a3] hover:bg-[#2a24a3]/90 text-[#ffffff] rounded-[110px] h-11 md:h-12 lg:h-[55px] px-6 md:px-4 font-medium text-base md:text-lg lg:text-[21px] gap-2`}>
+            <Button 
+              className={`w-full sm:w-auto bg-[#2a24a3] hover:bg-[#2a24a3]/90 text-[#ffffff] rounded-[110px] h-11 md:h-12 lg:h-[55px] px-6 md:px-4 font-medium text-base md:text-lg lg:text-[21px] gap-2`}
+              onClick={() => scrollToSection("contact")}
+            >
               {t("hero.getStarted")}
               <img
                 className={`w-5 h-5 md:w-6 md:h-6 lg:w-[29px] lg:h-[29px] ${isRTL ? "rotate-180" : ""}`}
@@ -90,7 +117,10 @@ export const HeroSection = (): JSX.Element => {
               />
             </Button>
 
-            <Button className={`w-full sm:w-auto bg-[#1babc6] hover:bg-[#1babc6]/90 text-[#ffffff] rounded-[110px] h-11 md:h-12 lg:h-[55px] px-6 md:px-4 font-medium text-base md:text-lg lg:text-[21px] gap-2`}>
+            <Button 
+              className={`w-full sm:w-auto bg-[#1babc6] hover:bg-[#1babc6]/90 text-[#ffffff] rounded-[110px] h-11 md:h-12 lg:h-[55px] px-6 md:px-4 font-medium text-base md:text-lg lg:text-[21px] gap-2`}
+              onClick={() => scrollToSection("services")}
+            >
               {t("hero.ourServices")}
               <img
                 className={`w-5 h-5 md:w-6 md:h-6 lg:w-[29px] lg:h-[29px] ${isRTL ? "rotate-180" : ""}`}
