@@ -26,14 +26,15 @@ export const FooterSection = (): JSX.Element => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+  
   return (
-    <footer className="relative w-full bg-white-background py-12 md:py-[72px] px-6 overflow-hidden">
-      <div className="max-w-[1352px] mx-auto">
-        <div className={`flex flex-col lg:flex-row items-center lg:items-start justify-center gap-12 lg:gap-[121px]`}>
-          <div className="flex flex-col w-full max-w-[467px] items-center justify-center gap-[27px] text-center my-auto">
+    <footer className="relative w-full  bg-white-background py-12 md:py-[72px] px-6 overflow-hidden">
+      <div className="max-w-[1200px] mx-auto">
+        <div className={`flex flex-col lg:flex-row items-center lg:items-start justify-between`}>
+          <div className="flex flex-col w-full max-w-[467px] items-center justify-center gap-[27px] text-center my-auto mr-0 md:mr-4">
             <img
               className="w-[120px] md:w-[173.65px] h-auto"
-              alt="Logo removebg"
+              alt="Logo"
               src="/figmaAssets/logo-removebg-preview-1.png"
             />
 
@@ -43,7 +44,7 @@ export const FooterSection = (): JSX.Element => {
           </div>
 
           <div className={`hidden md:flex items-start justify-center gap-8 md:gap-[85px]`}>
-            <nav className={`flex flex-col items-center lg:items-start gap-4 md:gap-[17px]`}>
+            {/* <nav className={`flex flex-col items-center lg:items-start gap-4 md:gap-[17px]`}>
               <h3 className="font-normal text-[#221c9d] text-lg md:text-xl tracking-[0] leading-[normal] whitespace-nowrap">
                 {t("footer.pages")}
               </h3>
@@ -52,12 +53,12 @@ export const FooterSection = (): JSX.Element => {
                 <a
                   key={index}
                   href="#"
-                  className="font-normal text-black-fonts-headings text-base md:text-[19px] tracking-[0] leading-[normal] hover:underline"
+                  className="font-normal text-black-fonts-headings text-base tracking-[0] leading-[normal] hover:underline"
                 >
                   {link.label}
                 </a>
               ))}
-            </nav>
+            </nav> */}
 
             <nav className={`flex flex-col items-center lg:items-start gap-4 `}>
               <h3 className="font-normal text-[#221c9d] text-lg md:text-xl tracking-[0] leading-[normal] whitespace-nowrap">
@@ -65,13 +66,13 @@ export const FooterSection = (): JSX.Element => {
               </h3>
 
               {servicesLinks.map((link, index) => (
-                <a
+                <button
                   key={index}
-                  href="#"
-                  className={`font-normal text-black-fonts-headings text-base md:text-[19px] tracking-[0] leading-[normal] hover:underline text-center lg:text-left ${isRTL ? "lg:text-right" : ""}`}
+                  onClick={()=>scrollToSection("services")}
+                  className={`font-normal text-black-fonts-headings text-base  tracking-[0] leading-[normal] hover:underline text-center lg:text-left ${isRTL ? "lg:text-right" : ""}`}
                 >
                   {link.label}
-                </a>
+                </button>
               ))}
             </nav>
 
@@ -82,7 +83,7 @@ export const FooterSection = (): JSX.Element => {
 
               <div className="w-full flex gap-x-4" >
            <a 
-           className="w-[47px] aspect-[1/1] flex items-center justify-center"
+           className="w-[20px] aspect-[1/1] flex items-center justify-center"
             href="https://www.instagram.com/pulvent_technologies"
             target="_blank"
             >
@@ -93,7 +94,7 @@ export const FooterSection = (): JSX.Element => {
             />
             </a>
               <a 
-               className="w-[47px] aspect-[1/1] flex items-center justify-center"
+               className="w-[20px] aspect-[1/1] flex items-center justify-center"
             href="https://www.facebook.com/pulvent/"
             target="_blank"
             >
@@ -104,7 +105,7 @@ export const FooterSection = (): JSX.Element => {
             />
              </a>
               <a 
-               className="w-[47px] aspect-[1/1] flex items-center justify-center"
+               className="w-[20px] aspect-[1/1] flex items-center justify-center"
              href="https://www.tiktok.com/@pulvent"
             target="_blank"
             >
@@ -115,7 +116,7 @@ export const FooterSection = (): JSX.Element => {
             />
              </a>
               <a 
-               className="w-[47px] aspect-[1/1] flex items-center justify-center"
+               className="w-[20px] aspect-[1/1] flex items-center justify-center"
             href="https://www.linkedin.com/company/pulvent/"
             target="_blank"
             >

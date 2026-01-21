@@ -16,11 +16,11 @@ export const HeroSection = (): JSX.Element => {
   }, []);
 
   const navigationItems = [
-    { label: t("nav.home"), hasDropdown: true, id: "home" },
-    { label: t("nav.service"), hasDropdown: true, id: "services" },
-    { label: t("nav.aboutUs"), hasDropdown: false, id: "about" },
-    { label: t("nav.portfolio"), hasDropdown: false, id: "portfolio" },
-    { label: t("nav.whyUs"), hasDropdown: false, id: "core-philosophy" },
+    { label: t("nav.home"),  id: "home" },
+    { label: t("nav.service"), id: "services" },
+    { label: t("nav.aboutUs"),  id: "about" },
+    { label: t("nav.portfolio"),  id: "portfolio" },
+    { label: t("nav.whyUs"), id: "why-us" }, 
   ];
 
   const scrollToSection = (id: string) => {
@@ -33,10 +33,46 @@ export const HeroSection = (): JSX.Element => {
   const toggleLanguage = () => {
     setLanguage(language === "en" ? "ar" : "en");
   };
+  useEffect(() => {
+    // 1. Handle the background blur logic (your existing code)
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+    window.addEventListener("scroll", handleScroll);
+  
+    // 2. Intersection Observer Logic for Scroll Spy
+    const observerOptions = {
+      root: null, // use the viewport
+      rootMargin: '-20% 0px -70% 0px', // Trigger when section is in the top-ish part of the screen
+      threshold: 0
+    };
+  
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveTap(entry.target.id);
+        }
+      });
+    };
+  
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+  
+    // Start observing each section ID from navigationItems
+    navigationItems.forEach((item) => {
+      const element = document.getElementById(item.id);
+      if (element) observer.observe(element);
+    });
+  
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
+    };
+  }, [navigationItems]); // Re-run if navigation items change
 
   return (
-    <section className="w-full relative overflow-hidden">
-      <nav className={`fixed top-0 left-0 right-0 z-[40] flex items-center justify-between gap-4 py-4 px-4 md:py-6 md:px-12 bg-[#fbf9fb]/80 backdrop-blur-md transition-all duration-300 ${isScrolled ? "border-b border-[#2a24a3]/10" : "border-b border-transparent"}`}>
+    <section className="w-full relative overflow-hidden max-w-[1200px] m-auto">
+      <nav className={`fixed h-[100px] top-0 left-0 right-0 z-[40]  py-4 px-4 md:py-6 md:px-0 bg-[#fbf9fb]/80 backdrop-blur-md transition-all duration-300 ${isScrolled ? "border-b border-[#2a24a3]/10" : "border-b border-transparent"}`}>
+      <div className="max-w-[1200px] m-auto flex items-center justify-between gap-4  ">
         <img
           className="w-[100px] h-auto md:w-[150.12px] md:h-[55.62px]"
           alt="Logo removebg"
@@ -139,14 +175,17 @@ export const HeroSection = (): JSX.Element => {
             </SheetContent>
           </Sheet>
         </div>
+        </div>
       </nav>
 
 
-      <div className={`flex flex-col-reverse md:flex-row gap-8 md:gap-11 px-6 md:px-12 py-10 md:py-14 items-center xs:items-start text-center md:text-left`}>
-        <div className={`flex flex-col items-center md:items-start gap-6 md:gap-11 w-full md:w-[603px] ${isRTL ? "md:items-end" : ""}`}>
+      <div className={`flex flex-col-reverse md:flex-row gap-8 md:gap-11 px-6 md:px-0 py-6 items-center xs:items-start text-center md:text-left h-[calc(100vh-100px)] `}>
+        <div className={`flex flex-col items-center md:items-start gap-6 md:gap-11 w-full md:w-[60%] ${isRTL ? "md:items-end" : ""}`}>
           <div className={`flex flex-col items-center md:items-start gap-4 md:gap-[39px] w-full ${isRTL ? "md:items-end" : ""}`}>
-            <h1 className="text-start w-full max-w-[582px] text-3xl md:text-4xl lg:text-[57px] leading-tight md:leading-normal">
+            <h1 className="text-start w-full max-w-[582px] text-2xl md:text-3xl lg:text-[57px] leading-tight md:leading-normal">
               <span className="font-normal text-[#2a24a3]">{t("hero.integrated")}</span>
+
+              <br/>
               <span className="font-extrabold text-[#2a24a3]">
                 {t("hero.businessSolutions")}
               </span>
@@ -155,7 +194,7 @@ export const HeroSection = (): JSX.Element => {
               </span>
             </h1>
 
-            <p className="text-start w-full font-medium text-[#000000] text-lg md:text-xl lg:text-[31px] ">
+            <p className="text-start w-full font-medium text-[#000000] text-lg md:text-xl lg:text-3xl md:max-w-[90%]">
               {t("hero.subtitle")}
             </p>
           </div>
@@ -188,7 +227,7 @@ export const HeroSection = (): JSX.Element => {
         </div>
 
         <img
-          className="w-full max-w-[500px] lg:max-w-[714px] h-auto"
+          className="w-full max-w-[500px] md:max-w-[40%] h-auto"
           alt="Chatgpt image jan"
           src="/figmaAssets/chatgpt-image-jan-2--2026--12-05-35-am-1.png"
         />

@@ -170,224 +170,221 @@ export const ContactSection = (): JSX.Element => {
 
   return (
     <>
-      <section className="flex bg-[#ffffff] w-full overflow-hidden mb-6 md:mb-12 lg:mb-[57px] pb-4 md:pb-10 lg:pb-[36px]">
-      <div className="flex mt-8 md:mt-16 lg:mt-[76px] w-full max-w-[1353px] mx-auto px-6 md:px-4 flex-col items-center gap-6 md:gap-[38px]">
-        <h2 id="our-services" className="font-normal text-transparent text-xl md:text-2xl lg:text-[37px] text-center tracking-[0] leading-[normal]">
-          <span className="font-medium text-[#1babc6]">{t("services.our")}</span>
-          <span className="font-bold text-[#1babc6]">{t("services.title")}</span>
-        </h2>
+<section className="bg-white w-full overflow-hidden mb-6 md:mb-10 lg:mb-12 pb-4 md:pb-8">
+  <div className="max-w-[1200px] mx-auto px-6 md:px-4 flex flex-col items-center gap-6 mt-8">
+    <h2 id="our-services" className="font-normal text-transparent text-xl md:text-2xl lg:text-3xl text-center tracking-[0] leading-[normal]">
+      <span className="font-medium text-[#1babc6]">{t("services.our")}</span>
+      <span className="font-bold text-[#1babc6]">{t("services.title")}</span>
+    </h2>
 
-        <div className="flex flex-col items-center gap-6 md:gap-12 lg:gap-[66px] w-full">
-          <Tabs value={activeService} onValueChange={setActiveService} className="w-full max-w-[759px]">
-            <TabsList className={`w-full h-auto md:h-12 lg:h-[63px] bg-[#ffffff] rounded-xl md:rounded-[100000px] shadow-0 md:shadow-[0px_0px_2px_#00000040] p-1.5 flex md:flex-wrap justify-start md:justify-between gap-3 md:gap-1 overflow-auto ${isRTL ? "md:flex-row-reverse" : ""}`}>
-              {tabItems.map((tab) => (
-                <TabsTrigger
-                  key={tab.id}
-                  value={tab.id}
-                  className={`md:bg-transparent h-9 md:h-10 lg:h-[51px] px-2.5 md:px-3 lg:px-2.5 rounded-[110px] text-xs md:text-sm lg:text-lg tracking-[0] leading-[normal] data-[state=active]:bg-[#2a24a3] data-[state=active]:text-[#ffffff] data-[state=active]:font-semibold data-[state=active]:text-sm md:data-[state=active]:text-base lg:data-[state=active]:text-[19px]  data-[state=inactive]:bg-[#E8F0F2] md:data-[state=inactive]:bg-transparent data-[state=inactive]:text-[#2a24a3] data-[state=inactive]:font-medium`}
+    <div className="flex flex-col items-center gap-6 md:gap-10 lg:gap-8 w-full">
+      <Tabs value={activeService} onValueChange={setActiveService} className="w-full max-w-[759px]">
+        <TabsList className={`w-full h-auto md:h-12 lg:h-12 bg-[#ffffff] rounded-xl md:rounded-[100000px] shadow-0 md:shadow-[0px_0px_2px_#00000040] p-1.5 flex md:flex-wrap justify-start md:justify-between gap-3 md:gap-1 overflow-auto ${isRTL ? "md:flex-row-reverse" : ""}`}>
+          {tabItems.map((tab) => (
+            <TabsTrigger
+              key={tab.id}
+              value={tab.id}
+              className={`md:bg-transparent h-9 md:h-10 lg:h-9 px-2.5 md:px-3 lg:px-4 rounded-[110px] text-xs md:text-sm lg:text-base tracking-[0] leading-[normal] data-[state=active]:bg-[#2a24a3] data-[state=active]:text-[#ffffff] data-[state=active]:font-semibold data-[state=active]:text-sm md:data-[state=active]:text-base lg:data-[state=active]:text-base  data-[state=inactive]:bg-[#E8F0F2] md:data-[state=inactive]:bg-transparent data-[state=inactive]:text-[#2a24a3] data-[state=inactive]:font-medium`}
+            >
+              {tab.label}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+      </Tabs>
+
+      <div className="flex flex-col items-start gap-6 md:gap-12 lg:gap-10 w-full">
+        <div className={`flex ${currentService?.cards ? 'flex-col-reverse md:flex-row' : "flex-col-reverse"} items-center gap-6 md:gap-10 lg:gap-10 w-full`}>
+          <div className={`flex flex-col ${currentService?.cards ? 'fw-full md:max-w-[666px] items-center md:items-start text-center md:text-left ' : "w-[80%] items-center text-center"} gap-4`}>
+            <h3 className={`${isRTL ? "flex space-x-[2px]" : ""} max-w-[450px] text-start w-full font-bold text-[#2a24a3] text-xl md:text-3xl lg:text-3xl tracking-[0] leading-tight md:leading-[normal]`}>
+              {renderTitleWithAlternatingWeights(currentService.title)}
+            </h3>
+
+            <p className={`${currentService?.cards ? 'text-start' : "text-center"} font-medium text-[#6f797b] text-base md:text-xl lg:text-xl tracking-[0] leading-normal`}>
+              {currentService.description}
+            </p>
+          </div>
+
+          <img
+            className="w-full md:max-w-[450px] lg:max-w-[480px] h-auto"
+            alt="Service Representation"
+            src={currentService?.image}
+          />
+        </div>
+
+        <div className="flex flex-col items-start gap-5 md:gap-6 w-full">
+          <div className={`${isRTL ? "md:flex-row-reverse" : "md:flex-row "} flex flex-col md:flex-row items-center gap-6 md:gap-[22px] w-full`}>
+            {currentService?.cards ?
+              currentService?.cards.slice(0, currentService?.cards?.length > 3 ? 2 : 3).map((card, index) => (
+                <Card
+                  key={index}
+                  className="w-full md:flex-1 h-auto md:h-[320px] lg:h-[320px] rounded-[20px] border border-solid border-[#f0e2e2]"
                 >
-                  {tab.label}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </Tabs>
+                  <CardContent className="flex flex-col h-full items-center gap-4 md:gap-6 lg:gap-6 pt-6 md:pt-8 lg:pt-8 pb-6 lg:pb-6 px-4 lg:px-[17px]">
+                    <div className="relative flex items-center justify-center">
+                      <div className="w-16 h-16 md:w-20 md:h-20 lg:w-20 lg:h-20 bg-[#f6f6f6] rounded-full" />
+                      <img
+                        className="absolute w-20 h-20 md:w-[90px] md:h-[90px] lg:w-24 lg:h-24 object-cover"
+                        alt={card.title}
+                        src={card.icon}
+                      />
+                    </div>
 
-          <div className="flex flex-col items-start gap-6 md:gap-12 lg:gap-[57px] w-full">
-            <div className={`flex ${currentService?.cards?'flex-col-reverse md:flex-row':"flex-col-reverse"} items-center gap-6 md:gap-10 lg:gap-[49px] w-full`}>
-              <div className={`flex flex-col ${currentService?.cards?'fw-full md:max-w-[666px] items-center md:items-start text-center md:text-left ':"w-[80%] items-center text-center"}  gap-4`}>
-                <h3 className={`${isRTL ? "flex space-x-[2px]" : ""} max-w-[450px] text-start w-full font-bold text-[#2a24a3] text-xl md:text-3xl lg:text-[42px] tracking-[0] leading-tight md:leading-[normal]`}>
-                  {/* {currentService.title} */}
-                  {renderTitleWithAlternatingWeights(currentService.title)}
-                </h3>
-
-                <p className={`${currentService?.cards?'text-start':"text-center"}  font-medium text-[#6f797b] text-base md:text-xl lg:text-3xl tracking-[0] leading-normal`}>
-                  {currentService.description}
-                </p>
-              </div>
-
-              <img
-                className="w-full md:max-w-[450px] lg:max-w-[617.39px] h-auto"
-                alt="Service Representation"
-                src={currentService?.image}
-              />
-            </div>
-
-            <div className="flex flex-col items-start gap-5 md:gap-6 w-full">
-              <div className={`${isRTL ? "md:flex-row-reverse" : "md:flex-row "} 
-               flex flex-col md:flex-row items-center gap-6 md:gap-[22px] w-full`}>
-                {currentService?.cards?
-                currentService?.cards.slice(0, currentService?.cards?.length>3?2:3).map((card, index) => (
-                  <Card
-                    key={index}
-                    className="w-full md:flex-1 h-auto md:h-[320px] lg:h-[394px] rounded-[20px] border border-solid border-[#f0e2e2]"
-                  >
-                    <CardContent className="flex flex-col h-full items-center gap-4 md:gap-6 lg:gap-[37px] pt-6 md:pt-8 lg:pt-[31px] pb-6 lg:pb-[21px] px-4 lg:px-[17px]">
-                      <div className="relative flex items-center justify-center">
-                        <div className="w-16 h-16 md:w-20 md:h-20 lg:w-[114px] lg:h-[114px] bg-[#f6f6f6] rounded-full" />
-                        <img
-                          className="absolute w-20 h-20 md:w-[90px] md:h-[90px] lg:w-[123px] lg:h-[123px] object-cover"
-                          alt={card.title}
-                          src={card.icon}
-                        />
-                      </div>
-
-                      <div className="flex flex-col items-center justify-center gap-3 md:gap-4 lg:gap-[21px] w-full">
-                        <h4 className="text-[#2a24a3] text-lg md:text-xl lg:text-[25px] text-center tracking-[0] leading-[normal]">
-                         {card.title}
-                        </h4>
-
-                        <p className="font-medium text-[#6f7a7c] text-sm md:text-base lg:text-2xl text-center tracking-[0] leading-[normal]">
-                          {card.description}
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                )):""}
-              </div>
-
-              <div className={`${isRTL ? "md:flex-row-reverse" : "md:flex-row "} flex flex-col md:flex-row items-center gap-6 md:gap-[22px] w-full`}>
-                
-                 {(currentService?.cards&&currentService?.cards?.length>3)?
-                  currentService.cards.slice(2, 4).map((card, index) => (
-                  <Card
-                    key={index}
-                    className="w-full md:flex-1 h-auto md:h-[320px] lg:h-[394px] rounded-[20px] border border-solid border-[#f0e2e2]"
-                  >
-                    <CardContent className="flex flex-col h-full items-center gap-4 md:gap-6 lg:gap-[37px] pt-6 md:pt-8 lg:pt-[31px] pb-6 lg:pb-[21px] px-4 lg:px-[17px]">
-                      <div className="w-16 h-16 md:w-20 md:h-20 lg:w-[114px] lg:h-[114px] bg-[#f6f6f6] rounded-full flex items-center justify-center">
-                        <img
-                          className="w-14 h-14 md:w-[70px] md:h-[70px] lg:w-[100px] lg:h-[100px] object-cover"
-                          alt={card.title}
-                          src={card.icon}
-                        />
-                      </div>
-
-                      <div className="flex flex-col items-center justify-center gap-3 md:gap-4 lg:gap-[21px] w-full">
-                        <h4 className="text-[#2a24a3] text-lg md:text-xl lg:text-[25px] text-center tracking-[0] leading-[normal]">
+                    <div className="flex flex-col items-center justify-center gap-3 md:gap-4 lg:gap-3 w-full">
+                      <h4 className="text-[#2a24a3] text-lg md:text-xl lg:text-xl text-center tracking-[0] leading-[normal]">
                         {card.title}
-                        </h4>
-
-                        <p className="font-medium text-[#6f7a7c] text-sm md:text-base lg:text-2xl text-center tracking-[0] leading-[normal]">
-                          {card.description}
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                )):""}
-              </div>
-
-              {/* ERP Card - Only show for software service */}
-              {activeService === "software" && (
-                <Card className="w-full rounded-[20px] border border-solid border-[#f0e2e2]">
-                  <CardContent className={`flex flex-col lg:flex-row items-center gap-8 px-6 md:px-[41px] py-8 md:py-[31px] `}>
-                    <div className="w-[80px] h-[80px] md:w-[114px] md:h-[114px] bg-[#f6f6f6] rounded-full flex items-center justify-center flex-shrink-0">
-                      <img
-                        className="w-[50px] h-[50px] md:w-[69.66px] md:h-[69.66px] object-cover"
-                        alt="Crm"
-                        src="/figmaAssets/crm.png"
-                      />
-                    </div>
-
-                    <div className={`flex flex-col items-center lg:items-start justify-center gap-6 md:gap-[41px] flex-1 text-center lg:text-left ${isRTL ? "lg:items-end lg:text-right" : ""}`}>
-                      <div className={`flex flex-col items-center lg:items-start justify-center gap-4 md:gap-[21px] w-full ${isRTL ? "lg:items-end" : ""}`}>
-                        <h4 className="w-full font-semibold text-[#2a24a3] text-xl md:text-[27px] tracking-[0] leading-[normal]">
-                          {t("services.erp")}
-                        </h4>
-
-                        <p className="font-medium text-[#6f7a7c] text-base md:text-2xl tracking-[0] leading-[normal]">
-                          {t("services.erpDesc")}
-                        </p>
-                      </div>
-
-                      <div className={`flex flex-wrap items-center justify-center lg:justify-start gap-6 md:gap-[43px] ${isRTL ? "flex-row-reverse lg:justify-end" : ""}`}>
-                        {partnerLogos.map((logo, index) => (
-                          <img
-                            key={index}
-                            className="h-8 md:h-12 w-auto object-contain"
-                            alt={logo.alt}
-                            src={logo.src}
-                          />
-                        ))}
-                      </div>
-                    </div>
-
-                    <Button 
-                      onClick={() => {
-                        setSheetService("software");
-                        setIsSheetOpen(true);
-                      }}
-                      className={`w-full md:w-[213px] h-12 md:h-[55px] bg-[#2a24a3] rounded-[110px] flex items-center justify-center gap-2.5 p-2.5 hover:bg-[#2a24a3]/90`}
-                    >
-                      <span className="font-medium text-[#ffffff] text-lg md:text-[21px] tracking-[0] leading-[normal]">
-                        {t("services.moreDetails")}
-                      </span>
-                      <img
-                        className={`w-6 h-6 md:w-[29px] md:h-[29px] ${isRTL ? "rotate-180" : ""}`}
-                        alt="Iconoir arrow up"
-                        src="/figmaAssets/iconoir-arrow-up-circle.svg"
-                      />
-                    </Button>
-                  </CardContent>
-                </Card>
-              )}
-
-              {/* IT Services More Details Card */}
-              {activeService === "it-services" && (
-                <Card className="w-full rounded-[20px] border border-solid border-[#f0e2e2]">
-                <CardContent className={`flex flex-col lg:flex-row items-center gap-8 px-6 md:px-[41px] py-8 md:py-[31px] `}>
-                  <div className="w-[80px] h-[80px] md:w-[114px] md:h-[114px] bg-[#f6f6f6] rounded-full flex items-center justify-center flex-shrink-0">
-                    <img
-                      className="w-[50px] h-[50px] md:w-[69.66px] md:h-[69.66px] object-cover"
-                      alt="Crm"
-                      src="/figmaAssets/1.png"
-                    />
-                  </div>
-
-                  <div className={`flex flex-col items-center lg:items-start justify-center gap-6 md:gap-[41px] flex-1 text-center lg:text-left ${isRTL ? "lg:items-end lg:text-right" : ""}`}>
-                    <div className={`flex flex-col items-center lg:items-start justify-center gap-4 md:gap-[21px] w-full ${isRTL ? "lg:items-end" : ""}`}>
-                      <h4 className="w-full font-semibold text-[#2a24a3] text-xl md:text-[27px] tracking-[0] leading-[normal]">
-                        {t("services.it.moreTitle")}
                       </h4>
 
-                      <p className="font-medium text-[#6f7a7c] text-base md:text-2xl tracking-[0] leading-[normal]">
-                        {t("services.it.moreDesc")}
+                      <p className="font-medium text-[#6f7a7c] text-sm md:text-base lg:text-base text-center tracking-[0] leading-[normal]">
+                        {card.description}
                       </p>
                     </div>
+                  </CardContent>
+                </Card>
+              )) : ""}
+          </div>
 
-                    <div className={`flex flex-wrap items-center justify-center lg:justify-start gap-6 md:gap-[43px] ${isRTL ? "flex-row-reverse lg:justify-end" : ""}`}>
-                    <img
-                        
-                          className="h-8 md:h-12 w-auto object-contain"
-                          alt=""
-                          src="/figmaAssets/2.png"
-                        />
+          <div className={`${isRTL ? "md:flex-row-reverse" : "md:flex-row "} flex flex-col md:flex-row items-center gap-6 md:gap-[22px] w-full`}>
+            {(currentService?.cards && currentService?.cards?.length > 3) ?
+              currentService.cards.slice(2, 4).map((card, index) => (
+                <Card
+                  key={index}
+                  className="w-full md:flex-1 h-auto md:h-[320px] lg:h-[320px] rounded-[20px] border border-solid border-[#f0e2e2]"
+                >
+                  <CardContent className="flex flex-col h-full items-center gap-4 md:gap-6 lg:gap-6 pt-6 md:pt-8 lg:pt-8 pb-6 lg:pb-6 px-4 lg:px-[17px]">
+                    <div className="w-16 h-16 md:w-20 md:h-20 lg:w-20 lg:h-20 bg-[#f6f6f6] rounded-full flex items-center justify-center">
+                      <img
+                        className="w-14 h-14 md:w-[70px] md:h-[70px] lg:w-16 lg:h-16 object-cover"
+                        alt={card.title}
+                        src={card.icon}
+                      />
                     </div>
+
+                    <div className="flex flex-col items-center justify-center gap-3 md:gap-4 lg:gap-3 w-full">
+                      <h4 className="text-[#2a24a3] text-lg md:text-xl lg:text-xl text-center tracking-[0] leading-[normal]">
+                        {card.title}
+                      </h4>
+
+                      <p className="font-medium text-[#6f7a7c] text-sm md:text-base lg:text-base text-center tracking-[0] leading-[normal]">
+                        {card.description}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              )) : ""}
+          </div>
+
+          {activeService === "software" && (
+            <Card className="w-full rounded-[20px] border border-solid border-[#f0e2e2]">
+              <CardContent className={`flex flex-col lg:flex-row items-center gap-6 px-6 md:px-[41px] py-6 md:py-[31px] `}>
+                <div className="w-[80px] h-[80px] md:w-[114px] md:h-[114px] lg:w-20 lg:h-20 bg-[#f6f6f6] rounded-full flex items-center justify-center flex-shrink-0">
+                  <img
+                    className="w-[50px] h-[50px] md:w-[69.66px] md:h-[69.66px] lg:w-12 lg:h-12 object-cover"
+                    alt="Crm"
+                    src="/figmaAssets/crm.png"
+                  />
+                </div>
+
+                <div className={`flex flex-col items-center lg:items-start justify-center gap-4 md:gap-[41px] flex-1 text-center lg:text-left ${isRTL ? "lg:items-end lg:text-right" : ""}`}>
+                  <div className={`flex flex-col items-center lg:items-start justify-center gap-2 md:gap-[21px] w-full ${isRTL ? "lg:items-end" : ""}`}>
+                    <h4 className="w-full font-semibold text-[#2a24a3] text-xl md:text-[27px] lg:text-2xl tracking-[0] leading-[normal]">
+                      {t("services.erp")}
+                    </h4>
+
+                    <p className="font-medium text-[#6f7a7c] text-base md:text-2xl lg:text-lg tracking-[0] leading-[normal]">
+                      {t("services.erpDesc")}
+                    </p>
                   </div>
 
-                  <Button 
-                    onClick={() => {
-                      setSheetService("it-services");
-                      setIsSheetOpen(true);
-                    }}
-                    className={`w-full md:w-[213px] h-12 md:h-[55px] bg-[#2a24a3] rounded-[110px] flex items-center justify-center gap-2.5 p-2.5 hover:bg-[#2a24a3]/90`}
-                  >
-                    <span className="font-medium text-[#ffffff] text-lg md:text-[21px] tracking-[0] leading-[normal]">
-                      {t("services.moreDetails")}
-                    </span>
-                    <img
-                      className={`w-6 h-6 md:w-[29px] md:h-[29px] ${isRTL ? "rotate-180" : ""}`}
-                      alt="Iconoir arrow up"
-                      src="/figmaAssets/iconoir-arrow-up-circle.svg"
-                    />
-                  </Button>
-                </CardContent>
-              </Card>
-              )}
-            </div>
-          </div>
+                  <div className={`flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-[43px] ${isRTL ? "flex-row-reverse lg:justify-end" : ""}`}>
+                    {partnerLogos.map((logo, index) => (
+                      <img
+                        key={index}
+                        className="h-6 md:h-12 lg:h-8 w-auto object-contain"
+                        alt={logo.alt}
+                        src={logo.src}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                <Button
+                  onClick={() => {
+                    setSheetService("software");
+                    setIsSheetOpen(true);
+                  }}
+                  className={`w-full md:w-[213px] h-12 md:h-[55px] lg:h-12 bg-[#2a24a3] rounded-[110px] flex items-center justify-center gap-2.5 p-2.5 hover:bg-[#2a24a3]/90`}
+                >
+                  <span className="font-medium text-[#ffffff] text-lg md:text-[21px] lg:text-lg tracking-[0] leading-[normal]">
+                    {t("services.moreDetails")}
+                  </span>
+                  <img
+                    className={`w-6 h-6 md:w-[29px] md:h-[29px] lg:w-6 lg:h-6 ${isRTL ? "rotate-180" : ""}`}
+                    alt="Iconoir arrow up"
+                    src="/figmaAssets/iconoir-arrow-up-circle.svg"
+                  />
+                </Button>
+              </CardContent>
+            </Card>
+          )}
+
+          {activeService === "it-services" && (
+            <Card className="w-full rounded-[20px] border border-solid border-[#f0e2e2]">
+              <CardContent className={`flex flex-col lg:flex-row items-center gap-6 px-6 md:px-[41px] py-6 md:py-[31px] `}>
+                <div className="w-[80px] h-[80px] md:w-[114px] md:h-[114px] lg:w-20 lg:h-20 bg-[#f6f6f6] rounded-full flex items-center justify-center flex-shrink-0">
+                  <img
+                    className="w-[50px] h-[50px] md:w-[69.66px] md:h-[69.66px] lg:w-12 lg:h-12 object-cover"
+                    alt="Crm"
+                    src="/figmaAssets/1.png"
+                  />
+                </div>
+
+                <div className={`flex flex-col items-center lg:items-start justify-center gap-4 md:gap-[41px] flex-1 text-center lg:text-left ${isRTL ? "lg:items-end lg:text-right" : ""}`}>
+                  <div className={`flex flex-col items-center lg:items-start justify-center gap-2 md:gap-[21px] w-full ${isRTL ? "lg:items-end" : ""}`}>
+                    <h4 className="w-full font-semibold text-[#2a24a3] text-xl md:text-[27px] lg:text-2xl tracking-[0] leading-[normal]">
+                      {t("services.it.moreTitle")}
+                    </h4>
+
+                    <p className="font-medium text-[#6f7a7c] text-base md:text-2xl lg:text-lg tracking-[0] leading-[normal]">
+                      {t("services.it.moreDesc")}
+                    </p>
+                  </div>
+
+                  <div className={`flex flex-wrap items-center justify-center lg:justify-start gap-4 md:gap-[43px] ${isRTL ? "flex-row-reverse lg:justify-end" : ""}`}>
+                  {partnerLogos2.map((logo, index) => (
+                      <img
+                        key={index}
+                        className="h-6 md:h-12 lg:h-8 w-auto object-contain"
+                        alt={logo.alt}
+                        src={logo.src}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                <Button
+                  onClick={() => {
+                    setSheetService("it-services");
+                    setIsSheetOpen(true);
+                  }}
+                  className={`w-full md:w-[213px] h-12 md:h-[55px] lg:h-12 bg-[#2a24a3] rounded-[110px] flex items-center justify-center gap-2.5 p-2.5 hover:bg-[#2a24a3]/90`}
+                >
+                  <span className="font-medium text-[#ffffff] text-lg md:text-[21px] lg:text-lg tracking-[0] leading-[normal]">
+                    {t("services.moreDetails")}
+                  </span>
+                  <img
+                    className={`w-6 h-6 md:w-[29px] md:h-[29px] lg:w-6 lg:h-6 ${isRTL ? "rotate-180" : ""}`}
+                    alt="Iconoir arrow up"
+                    src="/figmaAssets/iconoir-arrow-up-circle.svg"
+                  />
+                </Button>
+              </CardContent>
+            </Card>
+          )}
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
     <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
       <SheetContent side={isRTL ? "left" : "right"} className="w-full sm:max-w-2xl overflow-y-auto">

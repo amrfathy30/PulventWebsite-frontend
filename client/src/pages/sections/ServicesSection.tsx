@@ -62,20 +62,21 @@ export const ServicesSection = (): JSX.Element => {
   ];
 
   return (
-    <section className="flex flex-col w-full items-center gap-10 md:gap-16 lg:gap-[86px] py-12 px-4 overflow-hidden">
-      <div className="inline-flex flex-col items-center gap-6 md:gap-[30px] w-full">
+    <section className="flex flex-col w-full items-center gap-6 md:gap-6 lg:gap-6 py-8 px-4 md:px-0 overflow-hidden">
+      <div className="inline-flex flex-col items-center gap-6 md:gap-8 w-full">
         <div className="flex justify-center">
-          <h2 className="font-semibold text-[#1babc6] text-xl md:text-2xl lg:text-[37px] text-center whitespace-nowrap tracking-[0] leading-[normal]">
+          <h2 className="font-semibold text-[#1babc6] text-xl md:text-2xl lg:text-3xl text-center whitespace-nowrap tracking-[0] leading-[normal]">
             {t("work.title")}
           </h2>
         </div>
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full md:max-w-[759px]">
-            <TabsList className={`w-full h-auto md:h-12 lg:h-[63px] bg-[#ffffff] rounded-xl md:rounded-[100000px] shadow-0 md:shadow-[0px_0px_2px_#00000040] p-1.5 flex md:flex-wrap justify-start md:justify-between gap-3 md:gap-1 overflow-auto ${isRTL ? "md:flex-row-reverse" : ""}`}>
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full md:max-w-[700px]">
+  
+            <TabsList className={`w-full h-auto md:h-11 lg:h-12 bg-[#ffffff] rounded-xl md:rounded-[100000px] shadow-0 md:shadow-[0px_0px_2px_#00000040] p-1 flex md:flex-wrap justify-start md:justify-between gap-2 md:gap-1 overflow-auto ${isRTL ? "md:flex-row-reverse" : ""}`}>
               {filterTabs.map((tab) => (
                 <TabsTrigger
                   key={tab.id}
                   value={tab.id}
-                  className={`w-fit md:bg-transparent h-9 md:h-10 lg:h-[51px] px-2.5 md:px-3 lg:px-2.5 rounded-[110px] text-xs md:text-sm lg:text-lg tracking-[0] leading-[normal] data-[state=active]:bg-[#2a24a3] data-[state=active]:text-[#ffffff] data-[state=active]:font-semibold data-[state=active]:text-sm md:data-[state=active]:text-base lg:data-[state=active]:text-[19px]  data-[state=inactive]:bg-[#E8F0F2] md:data-[state=inactive]:bg-transparent data-[state=inactive]:text-[#2a24a3] data-[state=inactive]:font-medium`}
+                  className={`w-fit md:min-w-[80px] md:bg-transparent h-8 md:h-9 lg:h-10 px-3 md:px-4 rounded-[110px] text-xs md:text-sm lg:text-base tracking-[0] leading-[normal] data-[state=active]:bg-[#2a24a3] data-[state=active]:text-[#ffffff] data-[state=active]:font-semibold data-[state=active]:text-sm md:data-[state=active]:text-base lg:data-[state=active]:text-base data-[state=inactive]:bg-[#E8F0F2] md:data-[state=inactive]:bg-transparent data-[state=inactive]:text-[#2a24a3] data-[state=inactive]:font-medium transition-all`}
                 >
                   {tab.label}
                 </TabsTrigger>
@@ -84,7 +85,7 @@ export const ServicesSection = (): JSX.Element => {
           </Tabs>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-[9px] w-full max-w-[1316px]">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-4 w-full max-w-[1200px]">
         {projectImages.map((project, index) => (
           <div key={index} className="relative w-full aspect-square group overflow-hidden rounded-[17px]">
             <img
@@ -92,9 +93,6 @@ export const ServicesSection = (): JSX.Element => {
               alt={project.alt}
               src={project.src}
             />
-          
-            
-            
           </div>
         ))}
            {projectImages2.map((project, index) => (
@@ -104,7 +102,6 @@ export const ServicesSection = (): JSX.Element => {
               alt={project.alt}
               src={project.src}
             />
-          
           </div>
         ))}
       </div>

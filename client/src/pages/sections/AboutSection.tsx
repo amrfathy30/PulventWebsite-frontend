@@ -14,16 +14,19 @@ export const AboutSection = (): JSX.Element => {
     icon: "/figmaAssets/email.png",
     text: "contact@pulvent.com",
     iconClass: "w-[33.14px] h-[27.48px]",
+    href:"mailto:contact@pulvent.com"
   },
   {
     icon: "/figmaAssets/property-location.png",
     text: isRTL?'129 عثمان ابن عفان , النزهه - القاهرة - مصر' :"129 Othman Ibn Affan St., Al Nozha – Cairo",
     iconClass: "w-[33.14px] h-[31.72px]",
+    href:"https://www.google.com/maps/place/129+Othman+Ibn+Affan,+Al+Matar,+El+Nozha,+Cairo+Governorate+4470180/@30.1024541,31.3482122,119m/data=!3m1!1e3!4m6!3m5!1s0x145815e6ac1513f1:0x8e0063e67d99c96d!8m2!3d30.1027718!4d31.3481997!16s%2Fg%2F11gw2y33nd?entry=tts&g_ep=EgoyMDI2MDExMy4wIPu8ASoASAFQAw%3D%3D&skid=00648d36-8149-4796-81a9-1d7551c742cd"
   },
   {
     icon: "/figmaAssets/mobile-chat.png",
     text: "+20 15 50009295",
     iconClass: "w-[31.72px] h-[33.14px]",
+    href:"tel:+20 15 50009295"
   },
 ];
 
@@ -58,7 +61,7 @@ export const AboutSection = (): JSX.Element => {
     }
   };
   return (
-    <section id="contact-us" className="flex flex-col w-full items-center gap-12 md:gap-[78px] py-12 px-6 overflow-hidden">
+    <section id="contact-us" className="flex flex-col w-full max-w-[1200px] m-auto items-center gap-6 md:gap-8 py-8 px-6 md:px-0 overflow-hidden">
      <Toaster position="bottom-right" reverseOrder={false} 
      toastOptions={{
       duration: 10000, 
@@ -83,16 +86,16 @@ export const AboutSection = (): JSX.Element => {
 
       <div className="flex flex-col items-start gap-8 md:gap-[7px] w-full max-w-[1297px]">
         <div className={`flex flex-col lg:flex-row items-start justify-center gap-12 lg:gap-[65px] w-full`}>
-          <div className={`w-full lg:w-[574px] gap-8 md:gap-[42px] flex flex-col items-center lg:items-start text-center lg:text-left ${isRTL ? "lg:items-end lg:text-right" : ""}`}>
+          <div className={`w-full md:w-[50%] gap-8 md:gap-8 flex flex-col items-center lg:items-start text-center lg:text-left ${isRTL ? "lg:items-end lg:text-right" : ""}`}>
             <h3 className="self-stretch font-bold text-[#2a24a3] text-3xl md:text-[42px] tracking-[0] leading-tight md:leading-[normal]">
               {t("contact.together")}
             </h3>
 
-            <p className="self-stretch font-medium text-[#6f797b] text-lg md:text-3xl tracking-[0] leading-normal">
+            <p className="self-stretch font-medium text-[#6f797b] text-lg md:text-2xl tracking-[0] leading-normal">
               {t("contact.description")}
             </p>
 
-            <div className={`flex flex-col w-full items-center lg:items-start gap-6 md:gap-[33px] ${isRTL ? "lg:items-end" : ""}`}>
+            <div className={`flex flex-col w-full items-center lg:items-start gap-6 md:gap-6 ${isRTL ? "lg:items-end" : ""}`}>
               {contactInfo.map((item, index) => (
                 <div
                   key={index}
@@ -103,13 +106,16 @@ export const AboutSection = (): JSX.Element => {
                     alt={`Contact ${index}`}
                     src={item.icon}
                   />
-                  <span className={`text-start font-normal text-black text-base md:text-[20px] tracking-[0] leading-snug md:leading-[33.4px] `}
+                  <a 
+                  href={item?.href}
+                  target="_blank"
+                  className={`text-start font-normal text-black text-base md:text-[20px] tracking-[0] leading-snug md:leading-[33.4px] `}
                     style={{
                       direction: index==2 ? 'ltr' : "rtl"
                     }}
                   >
                     {item.text}
-                  </span>
+                  </a>
                 </div>
               ))}
             </div>
@@ -170,7 +176,7 @@ export const AboutSection = (): JSX.Element => {
 
           <div className="w-full lg:w-[658px] flex flex-col items-start gap-4 p-0">
             <div className="flex flex-col items-end gap-1.5 w-full">
-              <div className="flex flex-col w-full items-start gap-4">
+              <div id="contact_pulvent_form" className="flex flex-col w-full items-start gap-4">
                 <div className="relative w-full">
                   <Input
                     placeholder={t("contact.name")}
@@ -224,7 +230,7 @@ export const AboutSection = (): JSX.Element => {
                 </div>
 
                 <Button className={`w-full h-14 md:h-[68px] bg-[#2a24a3] hover:bg-[#2a24a3]/90 rounded-[110px] flex items-center justify-center gap-2.5 font-medium text-[#ffffff] text-lg md:text-[21px]`}
-                  disabled={!formData.message && !formData.name && !formData.email}
+                  disabled={!(formData.message && formData.name && formData.email)}
                   onClick={handleSubmit}
                 >
                   {status == 'loading' ?
