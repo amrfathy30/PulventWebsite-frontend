@@ -118,7 +118,7 @@ const translations = {
     "work.desktop": "Desktop",
     "work.marketing": "Marketing",
     "work.ai": "Ai",
-    "work.taxik": "Taxik Mobile App",
+
 
     // Philosophy Section
     "philosophy.title": "Our Core Philosophy",
@@ -268,7 +268,7 @@ const translations = {
     "work.desktop": "سطح المكتب",
     "work.marketing": "تسويق",
     "work.ai": "ذكاء اصطناعي",
-    "work.taxik": "تطبيق تاكسيك",
+
 
     // Philosophy Section
     "philosophy.title": "منهجيتنا في العمل",

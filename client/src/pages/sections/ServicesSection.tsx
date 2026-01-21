@@ -92,11 +92,7 @@ export const ServicesSection = (): JSX.Element => {
               alt={project.alt}
               src={project.src}
             />
-            {project.hasTaxik && (
-              <div className="absolute bottom-4 md:bottom-8 lg:bottom-[91px] left-1/2 -translate-x-1/2 font-semibold text-[#ffffff] text-lg md:text-2xl lg:text-[39px] text-center tracking-[0] leading-tight md:leading-relaxed lg:leading-[55px] whitespace-nowrap bg-black/40 md:bg-black/20 lg:bg-transparent px-4 py-2 rounded-lg backdrop-blur-sm md:backdrop-blur-none">
-                {t("work.taxik")}
-              </div>
-            )}
+          
             
             
           </div>
@@ -108,11 +104,7 @@ export const ServicesSection = (): JSX.Element => {
               alt={project.alt}
               src={project.src}
             />
-            {project.hasTaxik && (
-              <div className="absolute bottom-4 md:bottom-8 lg:bottom-[91px] left-1/2 -translate-x-1/2 font-semibold text-[#ffffff] text-lg md:text-2xl lg:text-[39px] text-center tracking-[0] leading-tight md:leading-relaxed lg:leading-[55px] whitespace-nowrap bg-black/40 md:bg-black/20 lg:bg-transparent px-4 py-2 rounded-lg backdrop-blur-sm md:backdrop-blur-none">
-                {t("work.taxik")}
-              </div>
-            )}
+          
           </div>
         ))}
       </div>
