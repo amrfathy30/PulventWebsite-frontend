@@ -6,7 +6,10 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useState } from "react";
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
-const contactInfo = [
+
+export const AboutSection = (): JSX.Element => {
+  const { isRTL, t } = useLanguage();
+  const contactInfo = [
   {
     icon: "/figmaAssets/email.png",
     text: "contact@pulvent.com",
@@ -14,7 +17,7 @@ const contactInfo = [
   },
   {
     icon: "/figmaAssets/property-location.png",
-    text: "129 Othman Ibn Affan St., Al Nozha – Cairo",
+    text: isRTL?'129 عثمان ابن عفان , النزهه - القاهرة - مصر' :"129 Othman Ibn Affan St., Al Nozha – Cairo",
     iconClass: "w-[33.14px] h-[31.72px]",
   },
   {
@@ -24,8 +27,6 @@ const contactInfo = [
   },
 ];
 
-export const AboutSection = (): JSX.Element => {
-  const { isRTL, t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -102,7 +103,7 @@ export const AboutSection = (): JSX.Element => {
                     alt={`Contact ${index}`}
                     src={item.icon}
                   />
-                  <span className={`text-start font-normal text-black text-base md:text-[23px] tracking-[0] leading-snug md:leading-[33.4px] `}
+                  <span className={`text-start font-normal text-black text-base md:text-[20px] tracking-[0] leading-snug md:leading-[33.4px] `}
                     style={{
                       direction: index==2 ? 'ltr' : "rtl"
                     }}
