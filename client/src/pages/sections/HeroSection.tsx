@@ -73,11 +73,14 @@ export const HeroSection = (): JSX.Element => {
     <section className="w-full relative overflow-hidden max-w-[1200px] m-auto">
       <nav className={`fixed h-[100px] top-0 left-0 right-0 z-[40]  py-4 px-4 md:py-6 md:px-0 bg-[#fbf9fb]/80 backdrop-blur-md transition-all duration-300 ${isScrolled ? "border-b border-[#2a24a3]/10" : "border-b border-transparent"}`}>
       <div className="max-w-[1200px] m-auto flex items-center justify-between gap-4  ">
+        <button onClick={()=> scrollToSection('home')}>
         <img
           className="w-[100px] h-auto md:w-[150.12px] md:h-[55.62px]"
-          alt="Logo removebg"
-          src="/figmaAssets/logo-removebg-preview-1-1.png"
+          alt="Pulvent_Logo"
+          src="/figmaAssets/logo.svg"
         />
+        </button>
+
 
         <div className={`hidden md:flex items-center justify-between p-1.5 bg-[#ffffff] rounded-[100000px] shadow-[0px_0px_2px_#00000040] gap-4`}>
 
@@ -179,8 +182,9 @@ export const HeroSection = (): JSX.Element => {
       </nav>
 
 
-      <div className={`flex flex-col-reverse md:flex-row gap-8 md:gap-11 px-6 md:px-0 py-6 items-center xs:items-start text-center md:text-left h-[calc(100vh-100px)] `}>
-        <div className={`flex flex-col items-center md:items-start gap-6 md:gap-11 w-full md:w-[60%] ${isRTL ? "md:items-end" : ""}`}>
+      <div className={`flex flex-col-reverse md:flex-row gap-8 md:gap-2 px-6 md:px-0 py-6 items-center xs:items-start text-center md:text-left h-[calc(100vh-100px)] `}>
+        <AnimatedBackground/>
+        <div className={`z-30 flex flex-col items-center md:items-start gap-6 md:gap-11 w-full md:w-[50%] ${isRTL ? "md:items-end" : ""}`}>
           <div className={`flex flex-col items-center md:items-start gap-4 md:gap-[39px] w-full ${isRTL ? "md:items-end" : ""}`}>
             <h1 className="text-start w-full max-w-[582px] text-2xl md:text-3xl lg:text-[57px] leading-tight md:leading-normal">
               <span className="font-normal text-[#2a24a3]">{t("hero.integrated")}</span>
@@ -201,7 +205,7 @@ export const HeroSection = (): JSX.Element => {
 
           <div className={`w-full flex items-center justify-start gap-4 md:gap-[25px] `}>
             <Button
-              className={`w-full sm:w-auto bg-[#2a24a3] hover:bg-[#2a24a3]/90 text-[#ffffff] rounded-[110px] h-11 md:h-12 lg:h-[55px] px-6 md:px-4 font-medium text-base md:text-lg lg:text-[21px] gap-2`}
+              className={`z-40 w-full sm:w-auto bg-[#2a24a3] hover:bg-[#2a24a3]/90 text-[#ffffff] rounded-[110px] h-11 md:h-12 lg:h-[55px] px-6 md:px-4 font-medium text-base md:text-lg lg:text-[21px] gap-2`}
               onClick={() => scrollToSection("contact")}
             >
               {t("hero.getStarted")}
@@ -213,7 +217,7 @@ export const HeroSection = (): JSX.Element => {
             </Button>
 
             <Button
-              className={`w-full sm:w-auto bg-[#1babc6] hover:bg-[#1babc6]/90 text-[#ffffff] rounded-[110px] h-11 md:h-12 lg:h-[55px] px-6 md:px-4 font-medium text-base md:text-lg lg:text-[21px] gap-2`}
+              className={`z-40 w-full sm:w-auto bg-[#1babc6] hover:bg-[#1babc6]/90 text-[#ffffff] rounded-[110px] h-11 md:h-12 lg:h-[55px] px-6 md:px-4 font-medium text-base md:text-lg lg:text-[21px] gap-2`}
               onClick={() => scrollToSection("services")}
             >
               {t("hero.ourServices")}
@@ -227,11 +231,28 @@ export const HeroSection = (): JSX.Element => {
         </div>
 
         <img
-          className="w-full max-w-[500px] md:max-w-[40%] h-auto"
-          alt="Chatgpt image jan"
-          src="/figmaAssets/chatgpt-image-jan-2--2026--12-05-35-am-1.png"
+          className=" z-30 w-full md:w-[50%] h-full"
+          alt="hero image"
+          src="/figmaAssets/hero.svg"
         />
       </div>
     </section>
+  );
+};
+const AnimatedBackground = () => {
+  // Create an array of 10 items to map through for the squares
+  const squares = Array.from({ length: 10 });
+
+  return (
+    <div className="absolute inset-0">
+
+        <div className="squares-wrapper">
+          {squares.map((_, index) => (
+            <div key={index} className="square-item"></div>
+          ))}
+        </div>
+
+      <div className="grey-bottom"></div>
+    </div>
   );
 };

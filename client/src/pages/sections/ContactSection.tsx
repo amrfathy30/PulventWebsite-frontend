@@ -18,29 +18,29 @@ export const ContactSection = (): JSX.Element => {
       alt: "Microsoft Dynamics 365",
       className: "w-[175.19px] h-[52.89px]",
       description:
-      isRTL?"حلٌّ رائدٌ على مستوى المؤسسات، يوحّد إمكانيات إدارة علاقات العملاء (CRM) وتخطيط موارد المؤسسات (ERP) بالاستفادة من منظومة مايكروسوفت. صُمّم هذا الحل للمؤسسات التي تسعى إلى تكاملٍ عميقٍ مع Office 365 وPower BI، مستخدماً تقنيات الذكاء الاصطناعي المدمجة لدعم عملية اتخاذ القرارات على مستوى الإدارة العليا.":
-       "A premier enterprise-grade solution that unifies CRM and ERP capabilities by leveraging the Microsoft ecosystem. It is designed for organizations seeking deep integration with Office 365 and Power BI, utilizing built-in Al to drive executive-level decision-making.",
-    },
-    {
-      src: "/figmaAssets/image-4.png",
-      alt: "Odoo",
-      className: "w-[166.54px] h-[55.51px] object-cover",
-      description: isRTL?`منصة "متكاملة" متعددة الاستخدامات وسهلة الاستخدام. يسمح هيكلها المعياري للشركات بالبدء بالتطبيقات الأساسية - مثل إدارة المخزون أو المحاسبة - وإضافة وظائف متكاملة مع نمو أعمالها، مما يجعلها مثالية لسير العمل المخصص والمحدد للغاية.`:
-      `A versatile, user-friendly "all-in-one" platform. Its modular structure allows businesses to start with essential apps—like Inventory or Accounting— and add integrated functionalities as they grow, making it ideal for highly specific, custom workflows`
+      isRTL?`نقدم في Pulvent تجربة تحول رقمي شاملة عبر منصة Microsoft Dynamics 365، حيث لا نكتفي بالتنفيذ فقط، بل نبدأ معكم برسم الرؤية من خلال استشارات تقنية معمقة تضمن مواءمة النظام مع أهداف شركتكم. نتميز بقدرة فائقة على تطوير وتعديل النظام (Customization) ليتناسب بدقة مع دورة عملكم الفريدة، مع تقديم دعم فني مستمر وضمان كامل على كفاءة الأداء، لنضمن لكم بيئة عمل ذكية، مرنة، ومحفزة للنمو.`:
+       "At Pulvent, we deliver end-to-end Microsoft Dynamics 365 implementations designed to streamline your business operations. Our service goes beyond standard setup; we provide expert strategic consultancy to align the platform with your goals, followed by bespoke customization to ensure the software fits your specific workflow perfectly. With our commitment to high-quality deployment, full warranty, and proactive support, we transform your CRM and ERP into a powerful engine for growth.",
     },
     {
       src: "/figmaAssets/11-1.png",
-      alt: "ERPNext",
-      className: "w-[127.63px] h-[41.19px] object-cover",
-       description: isRTL?"نظام تخطيط موارد المؤسسات (ERP) شامل ومفتوح المصدر، مصمم خصيصاً لتحقيق المرونة والشفافية. تم تطويره خصيصاً للتصنيع والتوزيع، ويوفر رؤية شاملة لكل شيء بدءاً من الرواتب وحتى تتبع الأصول، مع إعطاء الأولوية لكفاءة التكلفة والعمق الوظيفي.":
-       `A comprehensive, open-source ERP tailored for agility and transparency. Built for manufacturing and distribution, it provides a "single pane-of-glass" view of everything from payroll to asset tracking, prioritizing cost efficiency and functional depth`
+      alt: "Odoo",
+      className: "w-[166.54px] h-[55.51px] object-cover",
+      description: isRTL?`نقدم في Pulvent حلول Odoo ERP المتكاملة التي تمنحك سيطرة كاملة على كافة قطاعات شركتك في منصة واحدة. تبدأ خدمتنا بـ استشارات فنية وإدارية لفهم طبيعة دورتك المستندية، وصولاً إلى تطوير وتعديل البرمجيات (Customization) لضمان توافق النظام بنسبة 100% مع احتياجاتك. نحن نضمن لك عملية نقل بيانات آمنة، تدريبًا مكثفًا لفريقك، ودعمًا فنيًا مستمرًا مع ضمان حقيقي على جودة الأداء البرمجي.`:
+      `At Pulvent, we provide end-to-end Odoo ERP solutions that unify your business operations into one seamless platform. Our approach begins with expert business consultancy to map your workflows, followed by deep technical customization to ensure the system fits your unique requirements perfectly. We guarantee a smooth implementation, comprehensive team training, and reliable ongoing support, all backed by our quality warranty to ensure long-term business agility.`
     },
     {
       src: "/figmaAssets/11-2.png",
-      alt: "CRM Systems (Vtiger)",
+      alt: "ERPNext",
+      className: "w-[127.63px] h-[41.19px] object-cover",
+      description: isRTL?`نقدم في Pulvent حلول ERPNext كخيار استراتيجي للشركات الطامحة للنمو، حيث نوفر دورة كاملة تبدأ من الاستشارات التقنية لتحديد الموديولات الأنسب لأعمالكم، وصولاً إلى التخصيص البرمجي العميق (Customization) باستخدام إطار عمل Frappe. نضمن لكم استضافة آمنة، وإدارة كاملة للسيرفرات، مع ربط النظام بكافة أدواتكم الأخرى، كل ذلك مع التزامنا بتقديم دعم فني تخصصي وضمان شامل لضمان استمرارية العمل بأقصى كفاءة.`:
+      `At Pulvent, we leverage the power of ERPNext to provide a flexible and scalable management system tailored to your business. Our services encompass expert strategic consulting, followed by advanced Frappe-based customization to ensure every workflow is optimized. We handle the technical heavy lifting—from server configuration to seamless integrations—providing you with a high-performance system backed by a solid warranty and dedicated technical support.`
+   },
+    {
+      src: "/figmaAssets/image-4.png",
+      alt: "Vtiger CRM",
       className: "w-[169.86px] h-[30.8px]",
-       description: isRTL?"نظام تخطيط موارد المؤسسات (ERP) شامل ومفتوح المصدر، مصمم خصيصاً لتحقيق المرونة والشفافية. تم تطويره خصيصاً للتصنيع والتوزيع، ويوفر رؤية شاملة لكل شيء بدءاً من الرواتب وحتى تتبع الأصول، مع إعطاء الأولوية لكفاءة التكلفة والعمق الوظيفي.":
-       `A specialized platform designed to bridge marketing, sales, and support. It provides a 360-degree view of the customer journey, enabling automated lead scoring and personalized service to improve long-term retention.`
+       description: isRTL?`نقدم في Pulvent نظام Vtiger CRM كأداة ذكية وقوية لإدارة مبيعاتك وخدمة عملائك، حيث نتجاوز مجرد التركيب التقليدي لنقدم لك نظاماً مخصصاً بالكامل. نحن متخصصون في ربط Vtiger مع منصات التسويق المختلفة لضمان تدفق البيانات ومتابعة الحملات الإعلانية بدقة، بالإضافة إلى الربط الاحترافي مع أنظمة الـ Call Center (VoIP) لتتمكن من إجراء واستقبال المكالمات وتوثيقها مباشرة داخل ملف العميل`:
+       `At Pulvent, we transform Vtiger CRM into a powerful engine for your sales and customer service operations. We don't just provide software; we deliver a fully customized ecosystem tailored to your business DNA. Our expertise lies in creating a unified workspace by integrating Vtiger with your marketing platforms and your Call Center (VoIP) systems, ensuring that every customer interaction is captured, analyzed, and optimized.`
     },
   ];
   const partnerLogos2 = [

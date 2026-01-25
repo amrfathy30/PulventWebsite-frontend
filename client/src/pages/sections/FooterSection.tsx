@@ -35,7 +35,7 @@ export const FooterSection = (): JSX.Element => {
             <img
               className="w-[120px] md:w-[173.65px] h-auto"
               alt="Logo"
-              src="/figmaAssets/logo-removebg-preview-1.png"
+              src="/figmaAssets/logo.svg"
             />
 
             <p className="self-stretch font-normal text-[#1e1d1e] text-base md:text-xl text-center tracking-[0] leading-snug md:leading-[29px]">

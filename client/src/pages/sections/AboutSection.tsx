@@ -27,7 +27,7 @@ export const AboutSection = (): JSX.Element => {
     },
     {
       icon: "/figmaAssets/property-location.png",
-      text: isRTL ? '129 عثمان ابن عفان , النزهه - القاهرة - مصر' : "129 Othman Ibn Affan St., Al Nozha – Cairo",
+      text: isRTL ? '129 عثمان ابن عفان , النزهه - القاهرة - مصر' : "129 Othman Ibn Affan St., Al Nozha – Cairo - Egypt",
       iconClass: "w-[33.14px] h-[31.72px]",
       href: "https://www.google.com/maps/place/129+Othman+Ibn+Affan,+Al+Matar,+El+Nozha,+Cairo+Governorate+4470180/@30.1024541,31.3482122,119m/data=!3m1!1e3!4m6!3m5!1s0x145815e6ac1513f1:0x8e0063e67d99c96d!8m2!3d30.1027718!4d31.3481997!16s%2Fg%2F11gw2y33nd?entry=tts&g_ep=EgoyMDI2MDExMy4wIPu8ASoASAFQAw%3D%3D&skid=00648d36-8149-4796-81a9-1d7551c742cd"
     },
@@ -156,9 +156,9 @@ export const AboutSection = (): JSX.Element => {
                   <a
                     href={item?.href}
                     target="_blank"
-                    className={`text-start font-normal text-black text-base md:text-[20px] tracking-[0] leading-snug md:leading-[33.4px] `}
+                    className={`text-start font-normal text-black text-base md:text-base tracking-[0] leading-snug md:leading-[33.4px] `}
                     style={{
-                      direction: index == 2 ? 'ltr' : "rtl"
+                      direction: index == 2 || index == 1&&!isRTL ? 'ltr' : "rtl"
                     }}
                   >
                     {item.text}
@@ -208,16 +208,7 @@ export const AboutSection = (): JSX.Element => {
                   src="/figmaAssets/linkedIn.svg"
                 />
               </a>
-              <a
-                href="https://wa.me/+201550009295"
-                target="_blank"
-              >
-                <img
-                  className="w-[68px] aspect-[1/1]"
-                  alt="Social media icons"
-                  src="/figmaAssets/whatsapp.svg"
-                />
-              </a>
+
             </div>
           </div>
 
@@ -286,7 +277,7 @@ export const AboutSection = (): JSX.Element => {
                   }
                 </div>
 
-                <div className="flex items-start justify-between w-full">
+                <div className="flex flex-col md:flex-row items-start gap-2 justify-between w-full">
                   <div className="flex items-center gap-2 w-full">
                     <span className="text-sm text-red">{isRTL ? "جميع الحقول المطلوبة مشار إليها بـ" : "All required felids marked with"} </span>
                     <div className={` h-2 w-2  rounded-full font-normal bg-red rounded-lg text-white text-xs flex items-center justify-center`}></div>

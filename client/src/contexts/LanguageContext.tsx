@@ -65,7 +65,7 @@ const translations = {
     "services.it.security": "IT Outsourcing",
     "services.it.securityDesc": "Access a dedicated pool of engineers and specialists without the overhead of full-time internal hiring",
     "services.it.moreTitle":"Unified VoIP & Communication Solutions",
-    "services.it.moreDesc":"We provide enterprise-grade voice systems deployable on On-Premises hardware or as a Cloud PBX, supported by flexible integration via VoIP Gateways (GSM Gateways, USB Dongles, and Digital Trunks)",
+    "services.it.moreDesc":"Experience seamless connectivity with our high-performance VoIP systems, engineered for uncompromising quality and rock-solid reliability. We back every solution with a comprehensive warranty and 24/7 technical support to keep your business communicating without limits.",
     // Marketing
     "services.marketing.title": "Digital Marketing & Growth Engineering ",
     "services.marketing.desc": "We combine creative storytelling with rigorous data science to maximize your Return on Ad Spend (ROAS)",
@@ -213,8 +213,8 @@ const translations = {
     "services.it.cloudDesc": "تصميم بيئات سحابية آمنة وعالية التوافر على AWS و Azure و Google Cloud.",
     "services.it.security": "تدقيق الأمن السيبراني",
     "services.it.securityDesc": "تقييمات منتظمة للثغرات الأمنية وتطبيق بروتوكولات أمنية متقدمة.",
-    "services.it.moreTitle":"Unified VoIP & Communication Solutions",
-    "services.it.moreDesc":"Unified VoIP & Communication Solutions",
+    "services.it.moreTitle":"حلول الاتصالات الموحدة وVoIP",
+    "services.it.moreDesc":"حلول VoIP متكاملة تجمع بين دقة التنفيذ وضمان الأداء الطويل الأمد. شريككم التقني الذي يمنحكم راحة البال من خلال دعم فني متخصص وجودة لا تضاهى.",
 
     // Marketing
     "services.marketing.title": "تسويق رقمي يركز على النمو",

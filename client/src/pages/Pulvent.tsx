@@ -6,6 +6,7 @@ import { FeaturesSection } from "./sections/FeaturesSection";
 import { FooterSection } from "./sections/FooterSection";
 import { HeroSection } from "./sections/HeroSection";
 import { ServicesSection } from "./sections/ServicesSection";
+import { ChatWithUs } from "@/components/ui/chat-with-us";
 
 export const Pulvent = (): JSX.Element => {
   
@@ -18,6 +19,7 @@ export const Pulvent = (): JSX.Element => {
       <div id="why-us"><ContactFormSection /></div>
       <div id="contact"><AboutSection /></div>
       <FooterSection />
+      <ChatWithUs/>
       <BackToTop/>
     </div>
   );
