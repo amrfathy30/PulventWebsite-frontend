@@ -13,8 +13,8 @@ import 'react-international-phone/style.css';
 
 
 export const AboutSection = (): JSX.Element => {
-  const MINCHARNAME = 10;
-  const MINCHARMESSAGE = 25;
+  const MINCHARNAME = 6;
+  const MINCHARMESSAGE = 10;
 
 
   const { isRTL, t } = useLanguage();
@@ -51,10 +51,13 @@ export const AboutSection = (): JSX.Element => {
   });
 
   const [status, setStatus] = useState('idle'); // idle, loading, success, error
-
+  const validateEmail = (email:string) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
   const handleChange = (e: any) => {
     if (e.target.name == 'name') {
-      const cleanValue = e.target.value.replace(/[^a-zA-Z]/g, '');
+      const cleanValue = e.target.value.replace(/[^a-zA-Z ]/g, '');
       setFormData({ ...formData, [e.target.name]: cleanValue });
     }
     else {
@@ -69,12 +72,16 @@ export const AboutSection = (): JSX.Element => {
     const cleanValue = formData?.name.replace(/[^a-zA-Z]/g, '');
     const cleanValueMessage = formData?.message.replace(/[^a-zA-Z]/g, '');
     e.preventDefault();
+    if (!validateEmail(e.target.value)) {
+      toast.error(isRTL ? "برجاء ادخال بريد الكتروني صحيح" : 'Please enter a valid email');
+      return
+    }
     if (cleanValue?.length < MINCHARNAME) {
-      toast.error(isRTL ? "يجب أن يحتوي الاسم على 10 أحرف على الأقل" : 'Name must be at least 10 letters.');
+      toast.error(isRTL ? "يجب أن يحتوي الاسم على ٦ أحرف على الأقل" : 'Name must be at least 6 letters.');
       return
     }
     if (cleanValueMessage?.length < MINCHARMESSAGE) {
-      toast.error(isRTL ? "يجب أن تحتوي الرساله على ٢٥ حرف على الأقل" : 'Message must be at least 25 letters.');
+      toast.error(isRTL ? "يجب أن تحتوي الرساله على ١٠ حرف على الأقل" : 'Message must be at least 10 letters.');
       return
     }
     setStatus('loading');

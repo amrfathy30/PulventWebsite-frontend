@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from "@/components/ui/sheet";
@@ -16,11 +16,11 @@ export const HeroSection = (): JSX.Element => {
   }, []);
 
   const navigationItems = [
-    { label: t("nav.home"),  id: "home" },
+    { label: t("nav.home"), id: "home" },
     { label: t("nav.service"), id: "services" },
-    { label: t("nav.aboutUs"),  id: "about" },
-    { label: t("nav.portfolio"),  id: "portfolio" },
-    { label: t("nav.whyUs"), id: "why-us" }, 
+    { label: t("nav.aboutUs"), id: "about" },
+    { label: t("nav.portfolio"), id: "portfolio" },
+    { label: t("nav.whyUs"), id: "why-us" },
   ];
 
   const scrollToSection = (id: string) => {
@@ -39,14 +39,14 @@ export const HeroSection = (): JSX.Element => {
       setIsScrolled(window.scrollY > 0);
     };
     window.addEventListener("scroll", handleScroll);
-  
+
     // 2. Intersection Observer Logic for Scroll Spy
     const observerOptions = {
       root: null, // use the viewport
       rootMargin: '-20% 0px -70% 0px', // Trigger when section is in the top-ish part of the screen
       threshold: 0
     };
-  
+
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -54,15 +54,15 @@ export const HeroSection = (): JSX.Element => {
         }
       });
     };
-  
+
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-  
+
     // Start observing each section ID from navigationItems
     navigationItems.forEach((item) => {
       const element = document.getElementById(item.id);
       if (element) observer.observe(element);
     });
-  
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
       observer.disconnect();
@@ -71,125 +71,127 @@ export const HeroSection = (): JSX.Element => {
 
   return (
     <section className="w-full relative overflow-hidden max-w-[1200px] m-auto">
+      <ParticleWeb/>
       <nav className={`fixed h-[100px] top-0 left-0 right-0 z-[40]  py-4 px-4 md:py-6 md:px-0 bg-[#fbf9fb]/80 backdrop-blur-md transition-all duration-300 ${isScrolled ? "border-b border-[#2a24a3]/10" : "border-b border-transparent"}`}>
-      <div className="max-w-[1200px] m-auto flex items-center justify-between gap-4  ">
-        <button onClick={()=> scrollToSection('home')}>
-        <img
-          className="w-[100px] h-auto md:w-[150.12px] md:h-[55.62px]"
-          alt="Pulvent_Logo"
-          src="/figmaAssets/logo.svg"
-        />
-        </button>
-
-
-        <div className={`hidden md:flex items-center justify-between p-1.5 bg-[#ffffff] rounded-[100000px] shadow-[0px_0px_2px_#00000040] gap-4`}>
-
-          {navigationItems.map((item, index) => (
-            <Button
-              key={index}
-              variant={item.id == activeTap ? "default" : "ghost"}
-              className={`${item.id === activeTap ? "bg-[#2a24a3] text-[#ffffff] " : "bg-transparent text-[#2a24a3]"} hover:bg-[#2a24a3]/90 hover:text-white rounded-[110px] h-auto px-4 py-2.5 font-bold text-[19px]`}
-              onClick={() => {
-                setActiveTap(item.id)
-                scrollToSection(item.id)
-              }}
-            >
-              {item.label}
-              {/* {item.hasDropdown && <ChevronDownIcon className={`w-6 h-6`} />} */}
-            </Button>
-          ))}
-
-        </div>
-
-        <div className={`hidden md:flex items-center gap-2 md:gap-6`}>
-          <button
-            onClick={toggleLanguage}
-            className="font-medium text-[#2a24a3] text-sm md:text-[21px] cursor-pointer hover:opacity-80 transition-opacity"
-            data-testid="button-language-toggle"
-          >
-            {t("nav.langSwitch")}
+        <div className="max-w-[1200px] m-auto flex items-center justify-between gap-4  ">
+          <button onClick={() => scrollToSection('home')}>
+            <img
+              className="w-[100px] h-auto md:w-[150.12px] md:h-[55.62px]"
+              alt="Pulvent_Logo"
+              src="/figmaAssets/logo.svg"
+            />
           </button>
 
-          <Button
-            className={` bg-[#2a24a3] hover:bg-[#2a24a3]/90 text-[#ffffff] rounded-[110px] h-10 md:h-[55px] px-3 md:px-4 font-medium text-sm md:text-[21px] gap-1 md:gap-2 `}
-            onClick={() => scrollToSection("contact-us")}
-          >
-            {t("nav.contactUs")}
-            <img
-              className={`w-5 h-5 md:w-[29px] md:h-[29px] ${isRTL ? "rotate-180" : ""}`}
-              alt="Iconoir arrow up"
-              src="/figmaAssets/iconoir-arrow-up-circle.svg"
-            />
-          </Button>
-        </div>
-        {/* Mobile Nav */}
-        <div className="md:hidden flex items-center gap-4">
 
-          <Sheet open={openDrawer} onOpenChange={setOpenDrawer}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <img src="/figmaAssets/drower.svg" />
+          <div className={`hidden md:flex items-center justify-between p-1.5 bg-[#ffffff] rounded-[100000px] shadow-[0px_0px_2px_#00000040] gap-4`}>
+
+            {navigationItems.map((item, index) => (
+              <Button
+                key={index}
+                variant={item.id == activeTap ? "default" : "ghost"}
+                className={`${item.id === activeTap ? "bg-[#2a24a3] text-[#ffffff] " : "bg-transparent text-[#2a24a3]"} hover:bg-[#2a24a3]/90 hover:text-white rounded-[110px] h-auto px-4 py-2.5 font-bold text-[19px]`}
+                onClick={() => {
+                  setActiveTap(item.id)
+                  scrollToSection(item.id)
+                }}
+              >
+                {item.label}
+                {/* {item.hasDropdown && <ChevronDownIcon className={`w-6 h-6`} />} */}
               </Button>
-            </SheetTrigger>
-            <SheetContent side={isRTL ? "left" : "right"} className="px-2 t-6 w-[70%] sm:max-w-2xl overflow-y-auto flex flex-col justify-between">
-              <div className={`flex w-full mt-3 flex-col items-start justify-between p-1.5 gap-4`}>
-                {navigationItems.map((item, index) => (
+            ))}
+
+          </div>
+
+          <div className={`hidden md:flex items-center gap-2 md:gap-6`}>
+            <button
+              onClick={toggleLanguage}
+              className="font-medium text-[#2a24a3] text-sm md:text-[21px] cursor-pointer hover:opacity-80 transition-opacity"
+              data-testid="button-language-toggle"
+            >
+              {t("nav.langSwitch")}
+            </button>
+
+            <Button
+              className={` bg-[#2a24a3] hover:bg-[#2a24a3]/90 text-[#ffffff] rounded-[110px] h-10 md:h-[55px] px-3 md:px-4 font-medium text-sm md:text-[21px] gap-1 md:gap-2 `}
+              onClick={() => scrollToSection("contact-us")}
+            >
+              {t("nav.contactUs")}
+              <img
+                className={`w-5 h-5 md:w-[29px] md:h-[29px] ${isRTL ? "rotate-180" : ""}`}
+                alt="Iconoir arrow up"
+                src="/figmaAssets/iconoir-arrow-up-circle.svg"
+              />
+            </Button>
+          </div>
+          {/* Mobile Nav */}
+          <div className="md:hidden flex items-center gap-4">
+
+            <Sheet open={openDrawer} onOpenChange={setOpenDrawer}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <img src="/figmaAssets/drower.svg" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side={isRTL ? "left" : "right"} className="px-2 t-6 w-[70%] sm:max-w-2xl overflow-y-auto flex flex-col justify-between">
+                <div className={`flex w-full mt-3 flex-col items-start justify-between p-1.5 gap-4`}>
+                  {navigationItems.map((item, index) => (
+                    <Button
+                      key={index}
+                      variant={item.id == activeTap ? "default" : "ghost"}
+                      className={`${item.id === activeTap ? "bg-[#2a24a3] text-[#ffffff]" : "bg-[#E8F0F2] text-[#2A24A3]"} w-full justify-start hover:bg-[#2a24a3]/90 hover:text-white rounded-[110px] h-auto px-4 py-2.5 font-bold text-[19px]`}
+                      onClick={() => {
+                        setActiveTap(item.id)
+                        scrollToSection(item.id)
+                        setOpenDrawer(false)
+                      }}
+                    >
+                      {item.label}
+                      {/* {item.hasDropdown && <ChevronDownIcon className={`w-6 h-6`} />} */}
+                    </Button>
+                  ))}
+
+                </div>
+                <div className={`flex  p-1.5  flex-col w-full items-center gap-2 md:gap-6 mt-auto`}>
+
                   <Button
-                    key={index}
-                    variant={item.id == activeTap ? "default" : "ghost"}
-                    className={`${item.id === activeTap ? "bg-[#2a24a3] text-[#ffffff]" : "bg-[#E8F0F2] text-[#2A24A3]"} w-full justify-start hover:bg-[#2a24a3]/90 hover:text-white rounded-[110px] h-auto px-4 py-2.5 font-bold text-[19px]`}
+                    className={`w-full bg-[#2a24a3] hover:bg-[#2a24a3]/90 text-[#ffffff] rounded-[110px] h-10 md:h-[55px] px-3 md:px-4 font-medium text-sm md:text-[21px] gap-1 md:gap-2 `}
                     onClick={() => {
-                      setActiveTap(item.id)
-                      scrollToSection(item.id)
+                      scrollToSection("contact-us")
                       setOpenDrawer(false)
                     }}
                   >
-                    {item.label}
-                    {/* {item.hasDropdown && <ChevronDownIcon className={`w-6 h-6`} />} */}
+                    {t("nav.contactUs")}
+                    <img
+                      className={`w-5 h-5 md:w-[29px] md:h-[29px] ${isRTL ? "rotate-180" : ""}`}
+                      alt="Iconoir arrow up"
+                      src="/figmaAssets/iconoir-arrow-up-circle.svg"
+                    />
                   </Button>
-                ))}
+                  <button
+                    onClick={toggleLanguage}
+                    className="w-full justify-start font-medium text-[#2a24a3] text-sm md:text-[21px] cursor-pointer hover:opacity-80 transition-opacity"
+                    data-testid="button-language-toggle"
+                  >
+                    {t("nav.langSwitch")}
+                  </button>
 
-              </div>
-              <div className={`flex  p-1.5  flex-col w-full items-center gap-2 md:gap-6 mt-auto`}>
-
-                <Button
-                  className={`w-full bg-[#2a24a3] hover:bg-[#2a24a3]/90 text-[#ffffff] rounded-[110px] h-10 md:h-[55px] px-3 md:px-4 font-medium text-sm md:text-[21px] gap-1 md:gap-2 `}
-                  onClick={() => {
-                    scrollToSection("contact-us")
-                    setOpenDrawer(false)
-                  }}
-                >
-                  {t("nav.contactUs")}
-                  <img
-                    className={`w-5 h-5 md:w-[29px] md:h-[29px] ${isRTL ? "rotate-180" : ""}`}
-                    alt="Iconoir arrow up"
-                    src="/figmaAssets/iconoir-arrow-up-circle.svg"
-                  />
-                </Button>
-                <button
-                  onClick={toggleLanguage}
-                  className="w-full justify-start font-medium text-[#2a24a3] text-sm md:text-[21px] cursor-pointer hover:opacity-80 transition-opacity"
-                  data-testid="button-language-toggle"
-                >
-                  {t("nav.langSwitch")}
-                </button>
-
-              </div>
-            </SheetContent>
-          </Sheet>
-        </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </nav>
+   
 
+      <div className={`flex flex-col-reverse md:flex-row gap-8 md:gap-2 px-6 md:px-0 py-6 items-center xs:items-start text-center md:text-left h-[calc(100dvh-100px)] md:h-[calc(100vh-100px)] `}>
+        {/* <AnimatedBackground/> */}
 
-      <div className={`flex flex-col-reverse md:flex-row gap-8 md:gap-2 px-6 md:px-0 py-6 items-center xs:items-start text-center md:text-left h-[calc(100vh-100px)] `}>
-        <AnimatedBackground/>
         <div className={`z-30 flex flex-col items-center md:items-start gap-6 md:gap-11 w-full md:w-[50%] ${isRTL ? "md:items-end" : ""}`}>
           <div className={`flex flex-col items-center md:items-start gap-4 md:gap-[39px] w-full ${isRTL ? "md:items-end" : ""}`}>
             <h1 className="text-start w-full max-w-[582px] text-2xl md:text-3xl lg:text-[57px] leading-tight md:leading-normal">
               <span className="font-normal text-[#2a24a3]">{t("hero.integrated")}</span>
 
-              <br/>
+              <br />
               <span className="font-extrabold text-[#2a24a3]">
                 {t("hero.businessSolutions")}
               </span>
@@ -231,7 +233,7 @@ export const HeroSection = (): JSX.Element => {
         </div>
 
         <img
-          className=" z-30 w-full md:w-[50%] h-full"
+          className=" z-30 w-full md:w-[50%] h-[50%] md:h-full"
           alt="hero image"
           src="/figmaAssets/hero.svg"
         />
@@ -239,20 +241,128 @@ export const HeroSection = (): JSX.Element => {
     </section>
   );
 };
-const AnimatedBackground = () => {
-  // Create an array of 10 items to map through for the squares
-  const squares = Array.from({ length: 10 });
+
+
+const ParticleWeb = () => {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas: any = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    let animationFrameId: any;
+
+    // Configuration
+    const config = {
+      population: 100,
+      maxDist: 200,
+      color: "42, 36, 163 ",
+      speed: 0.5,
+    };
+
+    let points: any = [];
+
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    class Point {
+      vx: number;
+      x: number;
+      y: number;
+      vy: number;
+      dia: number;
+      constructor() {
+        this.x = Math.random() * (canvas.width + config.maxDist) - config.maxDist / 2;
+        this.y = Math.random() * (canvas.height + config.maxDist) - config.maxDist / 2;
+        this.vx = (Math.random() - 0.5) * config.speed;
+        this.vy = (Math.random() - 0.5) * config.speed;
+        this.dia = Math.random() * 3 + 1;
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        // Wrap around logic
+        if (this.x > canvas.width + config.maxDist / 2) this.x = -config.maxDist / 2;
+        else if (this.x < -config.maxDist / 2) this.x = canvas.width + config.maxDist / 2;
+
+        if (this.y > canvas.height + config.maxDist / 2) this.y = -config.maxDist / 2;
+        else if (this.y < -config.maxDist / 2) this.y = canvas.height + config.maxDist / 2;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.fillStyle = `#1babc6`;
+        ctx.arc(this.x, this.y, this.dia, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+    }
+
+    const init = () => {
+      resize();
+      points = [];
+      for (let i = 0; i < config.population; i++) {
+        points.push(new Point());
+      }
+    };
+
+    const drawLines = (p1: any) => {
+      for (let i = 0; i < points.length; i++) {
+        const p2 = points[i];
+        if (p1 !== p2) {
+          const dist = Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
+          if (dist < config.maxDist) {
+            ctx.beginPath();
+            ctx.lineWidth = 0.5;
+            // Opacity based on distance
+            const opacity = 0.8 * Math.pow((config.maxDist - dist) / config.maxDist, 5);
+            ctx.strokeStyle = `rgba(${config.color}, ${opacity})`;
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+          }
+        }
+      }
+    };
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      points.forEach((p: { update: () => void; draw: () => void; }) => {
+        p.update();
+        drawLines(p);
+        p.draw();
+      });
+
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    window.addEventListener('resize', init);
+    init();
+    animate();
+
+    return () => {
+      window.removeEventListener('resize', init);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
 
   return (
-    <div className="absolute inset-0">
-
-        <div className="squares-wrapper">
-          {squares.map((_, index) => (
-            <div key={index} className="square-item"></div>
-          ))}
-        </div>
-
-      <div className="grey-bottom"></div>
-    </div>
+    <canvas
+      ref={canvasRef}
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+        // zIndex: -1,
+        // The gradient from your CSS
+        // background: 'linear-gradient(to bottom, #0f3f8b, #092756)',
+      }}
+    />
   );
 };
+
