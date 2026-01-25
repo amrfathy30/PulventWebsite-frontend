@@ -17,12 +17,16 @@ function Router() {
 
 function App() {
   return (
-    <LanguageProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-      </TooltipProvider>
-    </LanguageProvider>
+
+      <LanguageProvider>
+
+        <TooltipProvider>
+          <Toaster />
+          <Router />
+        </TooltipProvider>
+
+      </LanguageProvider>
+
   );
 }
 

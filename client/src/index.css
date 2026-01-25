@@ -240,3 +240,28 @@ html.rtl .rtl-flip {
 section[id], div[id] {
   scroll-margin-top: 100px;
 }
+.react-international-phone-input,.react-international-phone-country-selector button{
+  height: 46px !important;
+}
+.react-international-phone-input{
+  width: 100%!important;
+border: 0 !important;
+border-left: 1px solid ;
+border-radius: 0 !important ;
+background: transparent !important;
+}
+.react-international-phone-country-selector button{
+  padding:0 10px !important;
+  border-radius: 0 !important ;
+  border: 0 !important;
+  background: transparent !important;
+}
+[dir='ltr'] .react-international-phone-input {
+  border-left: 1px solid #d7d7d7 !important;
+}
+
+[dir='rtl'] .react-international-phone-input {
+  border-right: 1px solid #d7d7d7 !important;
+  text-align: right !important; /* Keep numbers aligned left even in RTL */
+  direction: ltr;   /* Ensures +20 displays correctly */
+}
