@@ -72,7 +72,7 @@ export const AboutSection = (): JSX.Element => {
     const cleanValue = formData?.name.replace(/[^a-zA-Z]/g, '');
     const cleanValueMessage = formData?.message.replace(/[^a-zA-Z]/g, '');
     e.preventDefault();
-    if (!validateEmail(e.target.value)) {
+    if (!validateEmail(formData?.email)) {
       toast.error(isRTL ? "برجاء ادخال بريد الكتروني صحيح" : 'Please enter a valid email');
       return
     }
@@ -87,7 +87,7 @@ export const AboutSection = (): JSX.Element => {
     setStatus('loading');
 
     try {
-      const response = await axios.post('https://default3542a03d5db84a18b59660029739b2.55.environment.api.powerplatform.com/powerautomate/automations/direct/workflows/03ca626e2c3e4f4594da6af4c9ef545c/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=vm6on4oIxWRf4FB_SSJtFMp2OxitSr1xNgM4CMPnXik', formData);
+      const response = await axios.post('https://default3542a03d5db84a18b59660029739b2.55.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/03ca626e2c3e4f4594da6af4c9ef545c/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=vm6on4oIxWRf4FB_SSJtFMp2OxitSr1xNgM4CMPnXik', formData);
 
       if (response.status === 200 || response.status === 201 || response.status === 202) {
         setStatus('success');
